@@ -1,0 +1,81 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: white;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+.icon span,
+.text-icon span {
+  font-size: 12px;
+}
+
+.left,
+.right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: rgb(73, 72, 72);
+  cursor: pointer;
+}
+
+.center img {
+  height: 30px;
+}
+
+.text-icon {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.text-icon span {
+  font-size: 12px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.right img,
+.right svg {
+  cursor: pointer;
+}
+
+/* Underline hover effect for text inside icons */
+.hover-line {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding-bottom: 4px;
+}
+
+.hover-line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 1px;
+  height: 1px;
+  width: 0;
+  background-color: black;
+  transition: width 0.3s ease;
+}
+
+.hover-line:hover::after {
+  width: 100%;
+}
+
+.menu-dropdown {
+  width: 33%;
+  padding: 10px 30px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #ddd;
+  font-size: 14px;
+}
