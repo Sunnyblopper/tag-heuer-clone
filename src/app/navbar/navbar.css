@@ -1,81 +1,234 @@
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 30px;
-  background-color: white;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 14px;
-}
-
-.icon span,
-.text-icon span {
-  font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 25px;
+    background-color: white;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    position: relative;
+    z-index: 1000;
 }
 
 .left,
 .right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
 }
 
 .icon {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  color: rgb(73, 72, 72);
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: rgb(73, 72, 72);
+    cursor: pointer;
+}
+
+.icon span,
+.text-icon span {
+    font-size: 12px;
 }
 
 .center img {
-  height: 30px;
+    height: 30px;
 }
 
 .text-icon {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  cursor: pointer;
-}
-
-.text-icon span {
-  font-size: 12px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
 }
 
 .right img,
 .right svg {
-  cursor: pointer;
+    cursor: pointer;
 }
 
-/* Underline hover effect for text inside icons */
 .hover-line {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  padding-bottom: 4px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding-bottom: 4px;
 }
 
 .hover-line::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 1px;
-  height: 1px;
-  width: 0;
-  background-color: black;
-  transition: width 0.3s ease;
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    height: 1px;
+    width: 0;
+    background-color: black;
+    transition: width 0.3s ease;
 }
 
 .hover-line:hover::after {
-  width: 100%;
+    width: 100%;
 }
 
-.menu-dropdown {
-  width: 33%;
-  padding: 10px 30px;
-  background-color: #f9f9f9;
-  border-top: 1px solid #ddd;
-  font-size: 14px;
+.navigation-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: white;
+    height: 100vh;
+    width: 33.5%;
+    padding: 12px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    z-index: 2000;
+}
+
+.close-btn {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background: none;
+    border: none;
+    font-size: 12px;
+    color: #333;
+    cursor: pointer;
+    padding: 0 10px;
+    margin-bottom: 20px;
+}
+
+.close-btn:hover {
+    color: #666;
+}
+
+.partnership-section {
+    margin-bottom: 30px;
+}
+
+.partnership-label {
+    color: red;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 0 15px;
+
+}
+
+.menu-items {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+    gap: 35px;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+.menu-button svg {
+    color: #000000;
+}
+
+.menu-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+
+}
+
+.menu-button:hover .menu-title {
+    color: #666;
+}
+
+.chevron {
+    transition: transform 0.3s ease;
+    color: #999;
+}
+
+.chevron.expanded {
+    transform: rotate(90deg);
+}
+
+.submenu {
+    margin-top: 10px;
+    padding-left: 20px;
+    display: none;
+}
+
+.submenu.expanded {
+    display: block;
+}
+
+.submenu-item {
+    color: #666;
+    font-size: 14px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.action-items {
+    margin: 30px 0 60px;
+    display: flex;
+    padding: 0 15px;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.action-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+    color: #2e2e2e;
+    font-size: 12.5px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.action-item:hover {
+    color: #666;
+}
+
+.action-icon {
+    width: 15px;
+    height: 15px;
+    color: #000000;
+}
+
+.footer-items {
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footer-item {
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+    color: #2e2e2e;
+    font-size: 12.5px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.footer-item:hover {
+    color: #666;
 }
