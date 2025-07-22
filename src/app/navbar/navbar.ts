@@ -8,51 +8,50 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.css'
 })
 export class Navbar {
-  isMenuOpen = false;
-
-  expandedMenu: { [key: string]: boolean } = {};
+  isMenuOpen: boolean = false;
+  selectedMenuItem: string = '';
 
   menuItems = [
-    { title: 'TIMEPIECES', subItems: ['Luxury Watches', 'Sport Watches', 'Classic Collection', 'Limited Editions'] },
-    { title: 'CONNECTED WATCHES', subItems: ['Smart Features', 'Fitness Tracking', 'Connectivity'] },
-    { title: 'EYEWEAR', subItems: ['Sunglasses', 'Prescription Glasses', 'Sports Eyewear'] },
-    { title: 'BE INSPIRED', subItems: ['Stories', 'Heritage', 'Innovation'] },
-    { title: 'TAG HEUER WORLD', subItems: ['About Us', 'News', 'Events', 'Partnerships'] },
-    { title: 'SERVICES', subItems: ['Warranty', 'Repair Services', 'Customer Support', 'Care Instructions'] }
+    { title: 'TIMEPIECES', subItems: ['All Timepieces' , 'Collections', 'Accessories', 'Personalization'] },
+    { title: 'CONNECTED WATCHES', subItems: ['All Connected Watches', 'Collections', 'All Accessories', 'All About your connected watch', 'Customize your TAG Heuer Connected Watch'] },
+    { title: 'EYEWEAR', subItems: ['All sunglasses', 'Collections', 'Discover TAG Heuer Eyewear', 'Advanced by Design, Defined by Materials'] },
+    { title: 'BE INSPIRED', subItems: ['Essentials', 'Special editions', 'Automatic Watches', 'Chronograph watches', 'Tourbillon watches', 'Sport watches', 'Dive watches', 'Classic Watches'] },
+    { title: 'TAG HEUER WORLD', subItems: ['TAG Heuer Maison', 'Formula 1®', 'TAG Heuer Partnerships', 'TAG Heuer Ambassadors', 'Podcast', 'The EDGE Magazine', 'Careers'] },
+    { title: 'SERVICES', subItems: ['Repair my watch', 'Services & Prices', 'Warranty', 'Care Recommendations'] }
   ];
 
-  toggleMenu() {
+  
+
+  toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
-    console.log('Menu toggled:', this.isMenuOpen);
   }
 
-  toggleSubmenu(title: string): void {
-    this.expandedMenu[title] = !this.expandedMenu[title];
+  onMenuItemClick(title: string): void {
+    this.selectedMenuItem = title;
+  }
+
+  get selectedSubItems(): string[] {
+    const item = this.menuItems.find(m => m.title === this.selectedMenuItem);
+    return item ? item.subItems : [];
   }
 
   requestAppointment() {
-  console.log('Request appointment clicked');
-  alert('Appointment request would open here');
-}
+    console.log('Request an appointment clicked');
+  }
 
-findStore() {
-  console.log('Find store clicked');
-  alert('Store finder would open here');
-}
+  findStore() {
+    console.log('Find a store clicked');
+  }
 
-contactUs() {
-  console.log('Contact us clicked');
-  alert('Contact page would open here');
-}
+  contactUs() {
+    console.log('Contact us clicked');
+  }
 
-accessibility() {
-  console.log('Accessibility clicked');
-  alert('Accessibility options would open here');
-}
+  accessibility() {
+    console.log('Accessibility clicked');
+  }
 
-changeLanguage() {
-  console.log('Language change clicked');
-  alert('Language selector would open here');
-}
-
+  changeLanguage() {
+    console.log('Change language clicked');
+  }
 }
