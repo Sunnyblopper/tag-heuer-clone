@@ -1,0 +1,317 @@
+.contact-preferences {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 30px 40px;
+  text-align: center;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+.contact-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.contact-option {
+  background: #fafafa;
+  padding: 60px 10px;
+  min-height: 150px;
+  height: 300px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.contact-option:hover {
+  background-color: #000;
+  color: white;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-option:nth-child(3) .icon svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+.contact-option:hover .icon {
+  transform: scale(1.2);
+  color: white;
+}
+
+.option-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.extra-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: #666;
+  margin-top: 20px;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  height: 0;
+  transition: visibility 0s 0.3s, opacity 0.3s ease, height 0.3s ease, transform 0.3s ease;
+}
+
+.contact-option:hover .extra-text {
+  visibility: visible;
+  opacity: 1;
+  height: auto;
+  transform: translateY(0);
+}
+
+.contact-option:hover .option-title,
+.contact-option:hover .extra-text {
+  color: white;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 15px 0;
+  color: black;
+  font-size: 9.5px;
+  letter-spacing: 2px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.btn-text:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.btn-arrow {
+  margin-right: 10px;
+  font-size: 12px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.contact-option:hover .btn-arrow {
+  color: white;
+}
+
+.btn .btn-text {
+  font-weight: 800 !important;
+  transition: color 0.3s ease;
+}
+
+.contact-option:hover .btn-text {
+  color: white;
+}
+
+.btn:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+.contact-option:hover .action-btn {
+  color: white;
+}
+
+.contact-option:hover .action-btn:hover {
+  text-decoration: underline;
+}
+
+.btn-arrow {
+  margin-left: 5px;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.contact-option:hover .icon {
+  color: white;
+}
+
+.contact-option:hover .option-title,
+.contact-option:hover .extra-text {
+  color: white;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 1024px) {
+  .section-title {
+    font-size: 16px;
+    margin-bottom: 60px;
+  }
+
+  .contact-options {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+  }
+
+  .contact-option {
+    padding: 50px 20px;
+    height: 280px;
+  }
+
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .option-title {
+    font-size: 16px;
+  }
+
+  .extra-text {
+    font-size: 12px;
+  }
+
+  .btn {
+    font-size: 8.5px;
+  }
+
+  .btn-arrow {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+
+  .contact-options {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .contact-option {
+    padding: 40px 20px;
+    height: 250px;
+  }
+
+  .icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .option-title {
+    font-size: 14px;
+  }
+
+  .extra-text {
+    font-size: 11px;
+  }
+
+  .btn {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .btn-arrow {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .contact-options {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .contact-option {
+    padding: 35px 15px;
+    height: 230px;
+  }
+
+  .icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  .option-title {
+    font-size: 14px;
+  }
+
+  .extra-text {
+    font-size: 10px;
+  }
+
+  .btn {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+
+  .btn-arrow {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 320px) {
+  .section-title {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+
+  .contact-options {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .contact-option {
+    padding: 30px 10px;
+    height: 220px;
+  }
+
+  .icon {
+    width: 10px;
+    height: 10px;
+  }
+
+  .option-title {
+    font-size: 12px;
+  }
+
+  .extra-text {
+    font-size: 9px;
+  }
+
+  .btn {
+    font-size: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-arrow {
+    font-size: 8px;
+  }
+}

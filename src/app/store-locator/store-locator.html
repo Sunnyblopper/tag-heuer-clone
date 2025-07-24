@@ -1,0 +1,58 @@
+<div class="store-locator">
+    <!-- Sidebar -->
+    <aside class="bgcolor">
+        <div class="sidebar">
+            <div class="sidebar-top">
+                <h2>FIND A STORE</h2>
+
+                <div class="search-box">
+                    <img src="/image/search-svgrepo-com.svg" alt="" class="search-icon">
+                    <input type="text" placeholder="Search for country, region, city..." />
+                    <img src="/image/location-svgrepo-com.svg" alt="" class="map-icon">
+                </div>
+
+                <div class="filter-section">
+                    <h4>PRODUCTS</h4>
+                    <label><input type="checkbox" /> Timepieces</label>
+                    <label><input type="checkbox" /> Connected Watches</label>
+                    <label><input type="checkbox" /> Sunglasses</label>
+                    <label><input type="checkbox" /> Eyeglasses</label>
+                </div>
+                <hr />
+                <div class="filter-section">
+                    <h4>SERVICES</h4>
+                    <label><input type="checkbox" /> Connected Watch Trade-In</label>
+                </div>
+            </div>
+
+            <!-- Scrollable content -->
+            <div class="content-scrol">
+                <div class="store-list">
+                    <p class="store-count">{{ stores.length }} / {{ stores.length }} points of sales</p>
+
+                    <div class="store-cards" *ngFor="let store of stores">
+                        <div class="store-card">
+                            <h3><i class="fa-solid fa-shield text-danger"></i> {{ store.name }}</h3>
+                            <div class="card-text">
+                                <p [innerHTML]="store.address"></p>
+                                <a [href]="'tel:' + store.phone">{{ store.phone }}</a>
+                                <a href="#" class="btn-link">REQUEST AN APPOINTMENT</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </aside>
+
+    <!-- Map Area -->
+    <main class="map-area">
+        <div id="map" style="width: 100%; height: 100%; background: gray;"></div>
+        <div class="legend">
+            <span><i class="fa-solid fa-shield text-danger"></i> TAG Heuer Boutique</span>
+            <span><i class="fa-solid fa-shield text-dark"></i> Official Retailer</span>
+            <span><i class="fas fa-glasses brown"></i> Other Eyewear Store</span>
+        </div>
+    </main>
+</div>

@@ -1,0 +1,350 @@
+.store-locator {
+    display: flex;
+    height: 100vh;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #f5f5f5;
+}
+
+.bgcolor {
+    width: 325px;
+    background: white;
+}
+
+.sidebar {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-top {
+    padding: 30px 40px 20px;
+    flex-shrink: 0;
+}
+
+.sidebar h2 {
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 8px 30px 8px 20px;
+    border: none;
+    border-bottom: 1px solid #000000;
+    font-size: 14.5px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.search-box input::placeholder {
+    font-size: 12px;
+    font-weight: bold;
+    color: gray;
+}
+
+.search-box img {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+}
+
+.search-box .search-icon {
+    left: 0.5px;
+}
+
+.search-box .map-icon {
+    right: 8px;
+}
+
+.filter-section {
+    margin-bottom: 22px;
+}
+
+.filter-section h4 {
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.filter-section label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #000;
+    cursor: pointer;
+}
+
+.filter-section input[type="checkbox"] {
+    appearance: none;
+    width: 15px;
+    height: 14px;
+    border: 1px solid #000;
+    margin-right: 8px;
+    background-color: #fff;
+    position: relative;
+}
+
+.filter-section input[type="checkbox"]:checked::after {
+    content: '';
+    display: block;
+    width: 8.5px;
+    height: 7px;
+    background-color: #000;
+    position: absolute;
+    top: 1.5px;
+    left: 2px;
+    box-sizing: content-box;
+    border: 1px solid white;
+}
+
+/* Scrollable content */
+.content-scrol {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px 5px 10px;
+    background-color: #d9d9d9;
+    scrollbar-width: thin;
+    scrollbar-color: black transparent;
+}
+
+.store-list {
+    padding: 0 35px;
+}
+
+.store-count {
+    font-size: 14px;
+    color: #000000;
+    margin: 15px 0 10px;
+}
+
+.store-cards {
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+    background-color: #ffffff;
+    padding: 5px 10px;
+}
+
+.store-card {
+    padding: 5px 10px;
+}
+
+.card-text {
+    padding: 0 20px;
+}
+
+.store-card h3 {
+    font-size: 11px;
+    color: #000;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.2;
+    padding: 0;
+}
+
+.store-card p {
+    font-size: 10.5px;
+    color: gray;
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+.store-card a {
+    display: block;
+    font-size: 11px;
+    margin-top: 5px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #000;
+    padding: 0;
+}
+
+.card-text .btn-link {
+    padding-top: 10px;
+}
+
+/* ✅ Fixed map layout */
+.map-area {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Map legend */
+.legend {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    padding: 15px 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.5px;
+    gap: 29px;
+    color: gray;
+}
+
+.legend span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+.legend i {
+    font-size: 25px;
+}
+
+.brown {
+    color: #9c7c38;
+}
+
+/* Base styles already set for desktop */
+
+/* 1. Max width 1240px */
+@media (max-width: 1240px) {
+  .bgcolor {
+    width: 280px;
+  }
+}
+
+/* 2. Max width 1100px */
+@media (max-width: 1100px) {
+  .bgcolor {
+    width: 240px;
+  }
+  .sidebar-top {
+    padding: 20px 30px 15px;
+  }
+}
+
+/* 3. Max width 992px */
+@media (max-width: 992px) {
+  .store-locator {
+    flex-direction: column;
+  }
+  .bgcolor {
+    width: 100%;
+    height: auto;
+    order: 2;
+  }
+  .map-area {
+    height: 400px;
+    order: 1;
+  }
+}
+
+/* 4. Max width 850px */
+@media (max-width: 850px) {
+  .bgcolor {
+    padding: 0 15px;
+  }
+  .search-box input {
+    font-size: 13px;
+  }
+  .sidebar h2 {
+    font-size: 18px;
+  }
+}
+
+/* 5. Max width 768px */
+@media (max-width: 768px) {
+  .bgcolor {
+    width: 100%;
+  }
+  .store-count {
+    font-size: 13px;
+  }
+  .store-card h3 {
+    font-size: 10px;
+  }
+  .store-card p,
+  .store-card a {
+    font-size: 9.5px;
+  }
+}
+
+/* 6. Max width 600px */
+@media (max-width: 600px) {
+  .map-area {
+    height: 300px;
+  }
+  .filter-section h4 {
+    font-size: 11px;
+  }
+  .filter-section label {
+    font-size: 9px;
+  }
+}
+
+/* 7. Max width 480px */
+@media (max-width: 480px) {
+  .search-box input {
+    padding-left: 15px;
+  }
+  .sidebar h2 {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  .store-cards {
+    padding: 5px 10px;
+  }
+  .store-card h3 {
+    font-size: 9.5px;
+  }
+}
+
+/* 8. Max width 360px */
+@media (max-width: 360px) {
+  .search-box input {
+    font-size: 12px;
+  }
+  .filter-section label {
+    font-size: 8px;
+  }
+  .store-count {
+    font-size: 12px;
+  }
+  .store-card p,
+  .store-card a {
+    font-size: 8.5px;
+  }
+}
+
+/* 9. Max width 300px */
+@media (max-width: 300px) {
+  .sidebar-top {
+    padding: 10px 10px 10px;
+  }
+  .search-box input {
+    padding-left: 10px;
+  }
+  .store-card h3 {
+    font-size: 8.5px;
+  }
+}

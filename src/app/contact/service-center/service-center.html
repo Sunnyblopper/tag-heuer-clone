@@ -1,0 +1,28 @@
+<section class="service-section">
+  <h2 class="section-title">Useful Information About Our Watches</h2>
+
+  <div class="slider-container">
+    <div class="slider-track" [style.transform]="'translateX(-' + (currentIndex * 100) + '%)'">
+      <div *ngFor="let slide of slides" class="content-wrapper">
+        <div class="image-section" [ngStyle]="{'background-image': 'url(' + slide.image + ')'}">
+          <div class="image-overlay"></div>
+        </div>
+        <div class="content-section">
+          <h3 class="content-title">{{ slide.title }}</h3>
+          <p class="content-description">{{ slide.description }}</p>
+          <a href="{{ slide.link }}" class="discover-btn">
+            <span class="btn-arrow">›</span>
+            <span class="btn-text">Discover</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-arrow prev" (click)="goToPrev()" [class.hidden]="currentIndex === 0">‹</div>
+  <div class="nav-arrow next" (click)="goToNext()" [class.hidden]="currentIndex === slides.length - 1">›</div>
+
+  <div class="navigation-dots">
+    <div *ngFor="let slide of slides; let i = index" class="dot" [class.active]="i === currentIndex" (click)="goToSlide(i)"></div>
+  </div>
+</section>

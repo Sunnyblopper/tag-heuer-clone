@@ -1,0 +1,228 @@
+.contact-section {
+    position: relative;
+    min-height: 60vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: url('https://www.tagheuer.com/on/demandware.static/-/Library-Sites-TagHeuer-Shared/default/dwf0dbb53d/images/ContactUs/top-banner.jpg') no-repeat center center / cover;
+    color: white;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 35px 60px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.text-content {
+    max-width: 500px;
+}
+
+.text-content .brand {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: white;
+}
+
+.main-title {
+    font-size: 60px;
+    font-weight: bold;
+    color: white;
+}
+
+.description {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.sub-description {
+    font-size: 16px;
+    color: white;
+    font-weight: 300;
+}
+
+.buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 15px 0;
+    color: white;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.btn-text:hover {
+    text-decoration: underline;
+}
+
+.btn-arrow {
+    margin-right: 10px;
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover .btn-arrow {
+    transform: translateX(3px);
+}
+
+@media (max-width: 1024px) {
+    .contact-section {
+        min-height: 50vh;
+    }
+
+    .main-title {
+        font-size: 50px;
+    }
+
+    .description {
+        font-size: 12px;
+    }
+
+    .btn {
+        font-size: 12px;
+        padding: 12px 0;
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    .contact-section {
+        min-height: 45vh;
+    }
+
+    .main-title {
+        font-size: 40px;
+    }
+
+    .description {
+        font-size: 11px;
+    }
+
+    .btn {
+        font-size: 12px;
+        padding: 10px 0;
+    }
+
+    .content {
+        padding: 30px 20px;
+    }
+
+    .text-content {
+        max-width: 400px;
+    }
+
+    .buttons {
+        flex-direction: row;
+        gap: 20px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .contact-section {
+        min-height: 40vh;
+    }
+
+    .main-title {
+        font-size: 35px;
+    }
+
+    .description {
+        font-size: 10px;
+    }
+
+    .btn {
+        font-size: 11px;
+        padding: 8px 0;
+    }
+
+    .text-content {
+        max-width: 350px;
+    }
+
+    .buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .contact-section {
+        min-height: 35vh;
+    }
+
+    .main-title {
+        font-size: 28px;
+    }
+
+    .description {
+        font-size: 9px;
+    }
+
+    .btn {
+        font-size: 10px;
+        padding: 6px 0;
+        width: 150px;
+    }
+
+    .text-content {
+        max-width: 300px;
+    }
+
+    .buttons {
+        flex-direction: row;
+        gap: 15px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 300px) {
+
+    .contact-section {
+        min-height: 30vh;
+    }
+
+    .main-title {
+        font-size: 24px;
+    }
+
+    .description {
+        font-size: 8px;
+    }
+
+    .btn {
+        font-size: 9px;
+        padding: 5px 0;
+        width: 130px;
+    }
+
+    .text-content {
+        max-width: 250px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+    }
+}

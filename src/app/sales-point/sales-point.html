@@ -1,0 +1,12 @@
+<div class="bg-color">
+  <div class="container">
+    <h1>SALES POINT</h1>
+    <div class="countries-grid">
+      <div class="column" *ngFor="let column of countryColumns">
+        <div class="country" *ngFor="let country of column">
+          <a href="#">{{ country }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
