@@ -1,0 +1,667 @@
+.account-container {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            max-width: 670px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            overflow-x: hidden;
+        }
+
+        .account-options {
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #ccc;
+            margin-top: 65px;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            max-width: 100%;
+            background-color: white;
+            padding: 0;
+            box-sizing: border-box;
+            z-index: 1;
+            position: relative;
+            width: 100%;
+        }
+
+        .create-account,
+        .have-account {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 0 20px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .active {
+            border-bottom: 3px solid #000;
+        }
+
+        .user-icon {
+            width: 30px;
+            height: 27px;
+            border-radius: 50%;
+        }
+
+        .registration-form,
+        .login-form {
+            padding: 20px 0;
+        }
+
+        .login-form {
+            max-width: 300px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        h2 {
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 30px;
+            font-size: 1.0em;
+        }
+
+        .mandatory-notice {
+            color: #666;
+            font-size: 0.6em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-info {
+            color: rgb(104, 103, 103);
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 50px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.7em;
+            font-weight: 500;
+            color: #000000;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px 0;
+            border: none;
+            border-bottom: 1px solid #000000;
+            border-radius: 0;
+            box-sizing: border-box;
+            font-size: 0.9em;
+            background-color: transparent;
+            outline: none;
+            transition: border-bottom-color 0.3s ease;
+        }
+
+        input:focus,
+        select:focus {
+            border-bottom-color: #000;
+        }
+
+        input::placeholder {
+            color: gray;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px 0;
+            border: none;
+            border-bottom: 1px solid #000000;
+            border-radius: 0;
+            box-sizing: border-box;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background-color: transparent;
+            outline: none;
+            transition: border-bottom-color 0.3s ease;
+        }
+
+        .select-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .invalid-input {
+            border-bottom: 1px solid #d9534f !important;
+        }
+
+        .invalid-label {
+            color: #d9534f;
+        }
+
+        .validation-error {
+            color: #d9534f;
+            font-size: 0.8em;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .terms-error {
+            margin-left: 30px;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .visibility-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        .terms-section {
+            margin: 30px 0;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            min-width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            margin-right: 15px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .checkbox-group input[type="checkbox"]:checked {
+            background-color: #000;
+            border-color: #000;
+        }
+
+        .checkbox-group label {
+            font-weight: normal;
+            font-size: 0.85em;
+            line-height: 1.5;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        a {
+            color: #000;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .create-account-btn,
+        .login-btn {
+            background-color: #000;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.7em;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
+        }
+
+        .create-account-btn:hover,
+        .login-btn:hover {
+            background-color: white;
+            color: #000;
+            border: 1px solid black;
+        }
+
+        .privacy-confirmation {
+            margin: 30px 0;
+            font-size: 0.75em;
+            font-weight: 600;
+            line-height: 1.3;
+            color: #000000;
+        }
+
+        .forgotten-password {
+            text-align: center;
+            margin-top: 5px;
+            font-size: 0.75em;
+        }
+
+        .forgotten-password a {
+            color: #000000;
+            font-weight: 600;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Breakpoint 1: 1100px */
+        @media (max-width: 1100px) {
+            .account-container {
+                max-width: 600px;
+                padding: 25px 18px;
+            }
+
+            .account-options {
+                margin-top: 50px;
+            }
+
+            .form-row {
+                gap: 40px;
+            }
+
+            h2 {
+                font-size: 0.95em;
+            }
+        }
+
+        /* Breakpoint 2: 950px */
+        @media (max-width: 950px) {
+            .account-container {
+                max-width: 550px;
+                padding: 22px 16px;
+            }
+
+            .account-options {
+                margin-top: 60px;
+                position: sticky;
+                top: 0;
+                background-color: white;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            .create-account,
+            .have-account {
+                margin: 0 15px;
+                font-size: 10px;
+            }
+
+            .form-row {
+                gap: 30px;
+            }
+
+            .user-icon {
+                width: 28px;
+                height: 25px;
+            }
+        }
+
+        /* Breakpoint 3: 800px */
+        @media (max-width: 800px) {
+            .account-container {
+                max-width: 500px;
+                padding: 20px 15px;
+            }
+
+            .account-options {
+                margin-top: 58px;
+                position: sticky;
+                top: 0;
+                background-color: white;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                /* padding: 10px 0; */
+            }
+
+            .form-row {
+                gap: 25px;
+            }
+
+            .login-form {
+                max-width: 280px;
+            }
+
+            h2 {
+                font-size: 0.9em;
+                margin-bottom: 25px;
+            }
+        }
+
+        /* Breakpoint 4: 650px */
+        @media (max-width: 650px) {
+            .account-container {
+                max-width: 450px;
+                padding: 18px 12px;
+            }
+
+            .account-options {
+                position: sticky;
+                top: 0;
+                background-color: white;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                /* padding: 12px 0; */
+                margin-top: 60px;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .create-account,
+            .have-account {
+                margin: 0 10px;
+                font-size: 9px;
+                padding: 8px 15px;
+            }
+
+            .user-icon {
+                width: 26px;
+                height: 23px;
+            }
+
+            .login-form {
+                max-width: 260px;
+            }
+        }
+
+        /* Breakpoint 5: 550px */
+        @media (max-width: 550px) {
+            .account-container {
+                max-width: 400px;
+                padding: 15px 10px;
+            }
+
+            .account-options {
+                margin-top: 65px;
+                position: sticky;
+                top: 0;
+                background-color: white;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                /* padding: 15px 0; */
+            }
+
+            h2 {
+                font-size: 0.85em;
+                margin-bottom: 20px;
+            }
+
+            .mandatory-notice {
+                font-size: 0.55em;
+                margin-bottom: 25px;
+            }
+
+            .login-info {
+                font-size: 11px;
+                margin-bottom: 25px;
+            }
+
+            label {
+                font-size: 0.65em;
+            }
+
+            input {
+                font-size: 0.85em;
+            }
+        }
+
+        /* Breakpoint 6: 450px */
+        @media (max-width: 450px) {
+            .account-container {
+                max-width: 95%;
+                padding: 12px 8px;
+            }
+
+            .account-options {
+                position: sticky;
+                top: 0;
+                background-color: white;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                /* padding: 18px 0; */
+                margin-top: 75px;
+            }
+
+            .create-account,
+            .have-account {
+                margin: 0 8px;
+                font-size: 8px;
+                padding: 6px 12px;
+            }
+
+            .user-icon {
+                width: 24px;
+                height: 21px;
+            }
+
+            .login-form {
+                max-width: 240px;
+            }
+
+            .checkbox-group label {
+                font-size: 0.8em;
+            }
+
+            .create-account-btn,
+            .login-btn {
+                font-size: 0.65em;
+                padding: 12px 18px;
+            }
+        }
+
+        /* Breakpoint 7: 400px */
+        @media (max-width: 400px) {
+            .account-container {
+                padding: 10px 6px;
+            }
+
+            .account-options {
+                margin-top: 75px;
+                position: sticky;
+                top: 0;
+                background-color: white;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                padding: 0;
+            }
+
+            h2 {
+                font-size: 0.8em;
+                margin-bottom: 18px;
+            }
+
+            .create-account,
+            .have-account {
+                margin: 0 6px;
+                font-size: 7px;
+                padding: 5px 10px;
+            }
+
+            .user-icon {
+                width: 22px;
+                height: 19px;
+            }
+
+            .login-form {
+                max-width: 220px;
+            }
+
+            .terms-section {
+                margin: 25px 0;
+                padding-top: 15px;
+            }
+        }
+
+        /* Breakpoint 8: 350px */
+        @media (max-width: 350px) {
+            .account-container {
+                padding: 8px 4px;
+            }
+
+            .account-options {
+                margin-top: 80px;
+                position: sticky;
+                top: 0;
+                background-color: white;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                /* padding: 22px 0; */
+            }
+
+            h2 {
+                font-size: 0.75em;
+                margin-bottom: 15px;
+            }
+
+            .mandatory-notice {
+                font-size: 0.5em;
+                margin-bottom: 20px;
+            }
+
+            .login-info {
+                font-size: 10px;
+                margin-bottom: 20px;
+            }
+
+            .create-account,
+            .have-account {
+                margin: 0 4px;
+                font-size: 6px;
+                padding: 4px 8px;
+            }
+
+            .user-icon {
+                width: 20px;
+                height: 17px;
+            }
+
+            .login-form {
+                max-width: 200px;
+            }
+
+            label {
+                font-size: 0.6em;
+            }
+
+            input {
+                font-size: 0.8em;
+                padding: 8px 0;
+            }
+
+            .checkbox-group label {
+                font-size: 0.75em;
+            }
+
+            .create-account-btn,
+            .login-btn {
+                font-size: 0.6em;
+                padding: 10px 15px;
+            }
+        }
+
+        /* Breakpoint 9: 300px */
+        @media (max-width: 300px) {
+            .account-container {
+                padding: 6px 2px;
+            }
+
+            .account-options {
+                margin-top: 80px;
+                flex-direction: column;
+                gap: 5px;
+                position: sticky;
+                top: 0;
+                background-color: white;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                /* padding: 25px 0; */
+            }
+
+            h2 {
+                font-size: 0.7em;
+                margin-bottom: 12px;
+            }
+
+            .mandatory-notice {
+                font-size: 0.45em;
+                margin-bottom: 15px;
+            }
+
+            .login-info {
+                font-size: 9px;
+                margin-bottom: 15px;
+            }
+
+            .create-account,
+            .have-account {
+                margin: 0;
+                font-size: 5px;
+                padding: 3px 6px;
+                width: 100%;
+            }
+
+            .user-icon {
+                width: 18px;
+                height: 15px;
+            }
+
+            .login-form {
+                max-width: 180px;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            label {
+                font-size: 0.55em;
+            }
+
+            input {
+                font-size: 0.75em;
+                padding: 6px 0;
+            }
+
+            .terms-section {
+                margin: 20px 0;
+                padding-top: 12px;
+            }
+
+            .checkbox-group {
+                margin-bottom: 10px;
+            }
+
+            .checkbox-group label {
+                font-size: 0.7em;
+                line-height: 1.3;
+            }
+
+            .create-account-btn,
+            .login-btn {
+                font-size: 0.55em;
+                padding: 8px 12px;
+            }
+
+            .privacy-confirmation {
+                font-size: 0.7em;
+                margin: 20px 0;
+            }
+
+            .forgotten-password {
+                font-size: 0.7em;
+            }
+        }

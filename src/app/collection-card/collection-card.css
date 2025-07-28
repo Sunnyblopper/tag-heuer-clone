@@ -1,0 +1,344 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f5f5f5;
+    padding: 40px 50px;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 100%;
+    width: 100%;
+    padding: 0 10px;
+    /* Extra padding to avoid any overflow */
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.logo {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+.title {
+    font-family: "Miedinger W01 Bold";
+    font-size: 22px;
+    color: #000;
+    margin-bottom: 30px;
+}
+
+.discover-btn {
+    border: 1px solid #000;
+    background: transparent;
+    padding: 12px 16px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.discover-btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+.view-all {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: #000000;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    border-bottom: 1px solid #000;
+    padding-bottom: 12px;
+    display: block;
+    width: max-content;
+    margin: 15px auto 0;
+}
+
+/* Collection Cards Styles */
+.collections {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.collection-card {
+    background: url('https://www.tagheuer.com/on/demandware.static/-/Library-Sites-TagHeuer-Shared/default/dwe74efdf7/images/univers/9-Maison/tag_heuer_collection_background_hover.jpg?impolicy=resize&width=3600') center center / cover no-repeat;
+    border-radius: 0;
+    padding: 70px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    filter: brightness(1.15);
+}
+
+/* No margin between card images */
+.collection-card .watch-image img {
+    width: 80%;
+    height: auto;
+}
+
+/* Collection card overlay effect */
+.collection-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+        radial-gradient(circle at 80% 80%, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.collection-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+.collection-card:hover::after {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.collection-card:hover {
+    filter: brightness(1.2);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.collection-info {
+    color: black;
+    z-index: 2;
+    position: relative;
+}
+
+.collection-brand {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.collection-name {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Full Width Image Styles */
+.full-width-image {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.full-width-image img {
+    max-width: 70%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Responsive Media Queries */
+
+/* For screens 1248px and above (desktop) */
+@media (min-width: 1248px) {
+    .collections {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    }
+
+    .full-width-image img {
+        max-width: 70%; /* For large screens */
+    }
+}
+
+/* For screens 992px to 1247px (large tablets and small desktops) */
+@media (min-width: 992px) and (max-width: 1247px) {
+    .collections {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    }
+
+    .full-width-image img {
+        max-width: 75%; /* Adjust for smaller large screens */
+    }
+}
+
+/* For screens 768px to 991px (tablets) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .collections {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    }
+
+    .collection-card {
+        padding: 60px 70px;
+    }
+
+    .full-width-image img {
+        max-width: 80%; /* Make it slightly larger on tablets */
+    }
+}
+
+/* For screens 576px to 767px (small tablets and large phones) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .collections {
+        grid-template-columns: repeat(1, 1fr); /* 1 column */
+    }
+
+    .collection-card {
+        padding: 50px 60px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .discover-btn {
+        font-size: 10px;
+    }
+
+    .view-all {
+        font-size: 10px;
+    }
+
+    .full-width-image img {
+        max-width: 90%; /* Nearly full width on smaller devices */
+    }
+}
+
+/* For screens 420px to 575px (small phones) */
+@media (min-width: 420px) and (max-width: 575px) {
+    .collections {
+        grid-template-columns: repeat(1, 1fr); /* 1 column */
+    }
+
+    .collection-card {
+        padding: 40px 50px;
+    }
+
+    .title {
+        font-size: 16px;
+    }
+
+    .discover-btn {
+        font-size: 10px;
+    }
+
+    .view-all {
+        font-size: 10px;
+    }
+
+    .full-width-image img {
+        max-width: 90%; /* Similar width on small phones */
+    }
+}
+
+/* For screens 375px to 419px (phones) */
+@media (min-width: 375px) and (max-width: 419px) {
+    .collections {
+        grid-template-columns: repeat(1, 1fr); /* 1 column */
+    }
+
+    .collection-card {
+        padding: 30px 40px;
+    }
+
+    .title {
+        font-size: 14px;
+    }
+
+    .discover-btn {
+        font-size: 9px;
+    }
+
+    .view-all {
+        font-size: 9px;
+    }
+
+    .full-width-image img {
+        max-width: 95%; /* Almost full width for phones */
+    }
+}
+
+/* For screens 320px to 374px (smaller phones) */
+@media (min-width: 320px) and (max-width: 374px) {
+    .collections {
+        grid-template-columns: repeat(1, 1fr); /* 1 column */
+    }
+
+    .collection-card {
+        padding: 20px 30px;
+    }
+
+    .title {
+        font-size: 12px;
+    }
+
+    .discover-btn {
+        font-size: 8px;
+    }
+
+    .view-all {
+        font-size: 8px;
+    }
+
+    .full-width-image img {
+        max-width: 95%; /* Full width on smallest phones */
+    }
+}
+
+/* For screens 300px to 319px (smallest phones) */
+@media (min-width: 300px) and (max-width: 319px) {
+    .collections {
+        grid-template-columns: repeat(1, 1fr); /* 1 column */
+    }
+
+    .collection-card {
+        padding: 15px 25px;
+    }
+
+    .title {
+        font-size: 10px;
+    }
+
+    .discover-btn {
+        font-size: 8px;
+    }
+
+    .view-all {
+        font-size: 8px;
+    }
+
+    .full-width-image img {
+        max-width: 100%;
+    }
+}

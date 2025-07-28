@@ -1,38 +1,124 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './navbar.html',
-  styleUrl: './navbar.css'
+  styleUrl: './navbar.css',
 })
 export class Navbar {
   isMenuOpen: boolean = false;
   selectedMenuItem: string = '';
+  selectedSubSubItems: string[] = [];
+
+  constructor(private router: Router) {}
 
   menuItems = [
-    { title: 'TIMEPIECES', subItems: ['All Timepieces' , 'Collections', 'Accessories', 'Personalization'] },
-    { title: 'CONNECTED WATCHES', subItems: ['All Connected Watches', 'Collections', 'All Accessories', 'All About your connected watch', 'Customize your TAG Heuer Connected Watch'] },
-    { title: 'EYEWEAR', subItems: ['All sunglasses', 'Collections', 'Discover TAG Heuer Eyewear', 'Advanced by Design, Defined by Materials'] },
-    { title: 'BE INSPIRED', subItems: ['Essentials', 'Special editions', 'Automatic Watches', 'Chronograph watches', 'Tourbillon watches', 'Sport watches', 'Dive watches', 'Classic Watches'] },
-    { title: 'TAG HEUER WORLD', subItems: ['TAG Heuer Maison', 'Formula 1®', 'TAG Heuer Partnerships', 'TAG Heuer Ambassadors', 'Podcast', 'The EDGE Magazine', 'Careers'] },
-    { title: 'SERVICES', subItems: ['Repair my watch', 'Services & Prices', 'Warranty', 'Care Recommendations'] }
+    {
+      title: 'TIMEPIECES',
+      subItems: [
+        { name: 'All Timepieces' },
+        { name: 'Collections', children: ['Carrera', 'Aquaracer'] },
+        { name: 'Accessories' },
+        { name: 'Personalization', children: ['Engraving', 'Strap Options'] },
+      ],
+    },
+    {
+      title: 'CONNECTED WATCHES',
+      subItems: [
+        { name: 'All Connected Watches' },
+        { name: 'Collections', children: ['Golf Edition', 'Wellness Edition'] },
+        { name: 'All Accessories' },
+        { name: 'Customize', children: ['Colors', 'Bands'] },
+      ],
+    },
+    {
+      title: 'EYEWEAR',
+      subItems: [
+        { name: 'All sunglasses' },
+        { name: 'Collections' },
+        { name: 'Discover TAG Heuer Eyewear' },
+        {
+          name: 'Advanced by Design',
+          children: ['Carbon Frames', 'Performance Fit'],
+        },
+      ],
+    },
+    {
+      title: 'BE INSPIRED',
+      subItems: [
+        { name: 'Essentials' },
+        { name: 'Special editions' },
+        { name: 'Automatic Watches' },
+        { name: 'Chronograph watches' },
+        { name: 'Tourbillon watches' },
+        { name: 'Sport watches' },
+        { name: 'Dive watches' },
+        { name: 'Classic Watches' },
+      ],
+    },
+    {
+      title: 'TAG HEUER WORLD',
+      subItems: [
+        {
+          name: 'TAG Heuer Maison',
+          children: ['History', 'Craftsmanship', 'Heritage'],
+        },
+        { name: 'Formula 1®', children: ['History', 'Cars', 'Events'] },
+        {
+          name: 'TAG Heuer Partnerships',
+          children: ['Sports Teams', 'Events', 'Celebrities'],
+        },
+        { name: 'Podcast' },
+        { name: 'The EDGE Magazine' },
+        { name: 'Careers' },
+      ],
+    },
+    {
+      title: 'SERVICES',
+      subItems: [
+        { name: 'Repair my watch' },
+        { name: 'Services & Prices' },
+        { name: 'Warranty' },
+        { name: 'Care Recommendations' },
+      ],
+    },
   ];
 
-  
-
-  toggleMenu(): void {
+  toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+    if (!this.isMenuOpen) {
+      this.selectedMenuItem = ''; // Clear the selected item
+      this.selectedSubSubItems = []; // Clear the selected sub-sub items
+    }
   }
 
   onMenuItemClick(title: string): void {
     this.selectedMenuItem = title;
+    this.selectedSubSubItems = [];
   }
 
-  get selectedSubItems(): string[] {
-    const item = this.menuItems.find(m => m.title === this.selectedMenuItem);
+  get selectedSubItems(): { name: string; children?: string[] }[] {
+    const item = this.menuItems.find((m) => m.title === this.selectedMenuItem);
     return item ? item.subItems : [];
+  }
+
+  onSubMenuItemClick(subItem: { name: string; children?: string[] }): void {
+    if (subItem.children) {
+      this.selectedSubSubItems = subItem.children;
+    } else {
+      this.selectedSubSubItems = [];
+    }
+  }
+
+  onSearchClick(): void {
+    this.router.navigate(['/search']);
+  }
+
+  onregister(): void {
+    this.router.navigate(['/register']);
   }
 
   requestAppointment() {
@@ -40,11 +126,11 @@ export class Navbar {
   }
 
   findStore() {
-    console.log('Find a store clicked');
+    this.router.navigate(['/map']);
   }
 
   contactUs() {
-    console.log('Contact us clicked');
+    this.router.navigate(['/contact']);
   }
 
   accessibility() {

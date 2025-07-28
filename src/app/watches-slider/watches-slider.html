@@ -1,1 +1,52 @@
-<p>watches-slider works!</p>
+<div class="product-grid-wrapper">
+  <!-- Left Arrow -->
+  <div *ngIf="showLeftArrow" class="grid-nav-arrow left" (click)="scrollLeft()">
+    <i class="fas fa-chevron-left"></i>
+  </div>
+
+  <!-- Product Grid -->
+  <div class="product-grid" #productGrid>
+    <div *ngFor="let product of products; let i = index" class="product-card">
+      <div class="image-carousel">
+        <div class="image-carousel-inner">
+          <img *ngFor="let img of product.images; let idx = index"
+               [src]="img" 
+               [style.display]="idx === currentIndexes[i] ? 'block' : 'none'" />
+        </div>
+        <div class="inner-nav-arrow left" (click)="prevImage(i)">
+          <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="inner-nav-arrow right" (click)="nextImage(i)">
+          <i class="fas fa-chevron-right"></i>
+        </div>
+      </div>
+
+      <div class="text-overlay">
+        <div class="heart-line">
+          <div class="new-tag">NEW</div>
+          <i class="far fa-heart heart-icon" (click)="toggleHeart($event)"></i>
+        </div>
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p class="price">{{ product.price | currency }}</p>
+        <button class="customizable-button">CUSTOMIZABLE</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Arrow -->
+  <div *ngIf="showRightArrow" class="grid-nav-arrow right" (click)="scrollRight()">
+    <i class="fas fa-chevron-right"></i>
+  </div>
+</div>
+
+<!-- Navigation Dots -->
+<div class="navigation-dots">
+  <div *ngFor="let dot of products; let i = index" class="dot" 
+       [class.active]="i === currentIndex" (click)="goToSlide(i)"></div>
+</div>
+
+<!-- View All Button -->
+<div class="center-container">
+  <a href="#" class="view-all-button">VIEW ALL WATCHES</a>
+</div>

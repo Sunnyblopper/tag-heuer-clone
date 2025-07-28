@@ -1,0 +1,253 @@
+.formula-overlay-wrapper {
+    background: url('https://www.tagheuer.com/on/demandware.static/-/Library-Sites-TagHeuer-Shared/default/dwf4fd5de4/images/1-Partnership-REVAMP/motorsports/1-Formula-one/tag_heuer_designed_to_win_cars_16_9.jpg?impolicy=resize&width=3600') no-repeat center center;
+    background-size: cover;
+    height: 650px;
+    width: 97%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0 60px;
+}
+
+.formula-overlay {
+    width: 100%;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.formula-title {
+    font-family: "Miedinger W01 Bold";
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.formula-highlight {
+    font-family: "Miedinger W01 Bold";
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+
+.formula-description {
+    color: #6b6b6b;
+    font-weight: 400;
+    font-size: 0.9rem;
+    max-width: 690px;
+    margin: 18px auto 0;
+}
+
+.full-width-image {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.full-width-image img {
+    max-width: 70%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Media Queries for Responsiveness */
+
+/* 1248px */
+@media (max-width: 1248px) {
+    .formula-overlay-wrapper {
+        padding: 0 40px;
+    }
+
+    .formula-title,
+    .formula-highlight {
+        font-size: 1.2rem;
+    }
+
+    .formula-description {
+        font-size: 1rem;
+        max-width: 600px;
+    }
+
+    .full-width-image img {
+        max-width: 60%;
+        height: 13px;
+    }
+}
+
+/* 1024px */
+@media (max-width: 1024px) {
+    .formula-overlay-wrapper {
+        padding: 0 30px;
+    }
+
+    .formula-title,
+    .formula-highlight {
+        font-size: 1.1rem;
+    }
+
+    .formula-description {
+        font-size: 0.95rem;
+        max-width: 550px;
+    }
+
+    .full-width-image img {
+        max-width: 80%;
+        height: 10px;
+    }
+}
+
+/* 768px */
+@media (max-width: 768px) {
+    .formula-overlay-wrapper {
+        height: 500px;
+        padding: 0 20px;
+    }
+
+    .formula-title,
+    .formula-highlight {
+        font-size: 1rem;
+    }
+
+    .formula-description {
+        font-size: 0.9rem;
+        max-width: 100%;
+    }
+
+    .full-width-image img {
+        max-width: 85%;
+        height: 10px;
+    }
+}
+
+/* 600px */
+@media (max-width: 600px) {
+    .formula-overlay-wrapper {
+        height: 400px;
+        padding: 0 15px;
+    }
+
+    .formula-title,
+    .formula-highlight {
+        font-size: 1rem;
+    }
+
+    .formula-description {
+        font-size: 0.85rem;
+        max-width: 90%;
+    }
+
+    .full-width-image img {
+        max-width: 90%;
+         height: 12px;
+    }
+}
+
+/* 480px */
+@media (max-width: 480px) {
+    .formula-overlay-wrapper {
+        height: 350px;
+        padding: 0 10px;
+    }
+
+    .formula-title,
+    .formula-highlight {
+        font-size: 0.9rem;
+    }
+
+    .formula-description {
+        font-size: 0.8rem;
+        max-width: 85%;
+    }
+
+    .full-width-image img {
+        max-width: 80%;
+         height: 10px;
+    }
+}
+
+/* 400px */
+@media (max-width: 400px) {
+    .formula-overlay-wrapper {
+        height: 300px;
+        padding: 0 10px;
+    }
+
+    .formula-title,
+    .formula-highlight {
+        font-size: 0.85rem;
+    }
+
+    .formula-description {
+        font-size: 0.75rem;
+        max-width: 80%;
+    }
+
+    .full-width-image img {
+        max-width: 80%;
+         height: 12px;
+    }
+}
+
+/* 375px */
+@media (max-width: 375px) {
+    .formula-overlay-wrapper {
+        height: 280px;
+        padding: 0 8px;
+    }
+
+    .formula-title,
+    .formula-highlight {
+        font-size: 0.85rem;
+    }
+
+    .formula-description {
+        font-size: 0.7rem;
+        max-width: 75%;
+    }
+
+    .full-width-image img {
+        max-width: 80%;
+         height: 10px;
+    }
+}
+
+/* 360px */
+@media (max-width: 360px) {
+    .formula-overlay-wrapper {
+        height: 270px;
+        padding: 0 5px;
+    }
+
+    .formula-title,
+    .formula-highlight {
+        font-size: 0.8rem;
+    }
+
+    .formula-description {
+        font-size: 0.7rem;
+        max-width: 70%;
+    }
+
+    .full-width-image img {
+        max-width: 80%;
+         height: 8px;
+    }
+}
+
+/* 320px */
+@media (max-width: 320px) {
+    .formula-overlay-wrapper {
+        height: 250px;
+        padding: 0 5px;
+    }
+
+    .formula-title,
+    .formula-highlight {
+        font-size: 0.75rem;
+    }
+
+    .formula-description {
+        font-size: 0.65rem;
+        max-width: 60%;
+    }
+
+    .full-width-image img {
+        max-width: 80%;
+         height: 8px;
+    }
+}

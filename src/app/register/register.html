@@ -1,0 +1,200 @@
+<div class="account-options">
+    <div [class.active]="!showLogin" class="create-account" (click)="showLogin = false">
+        <img src="/image/user-plus-alt-1-svgrepo-com (1).svg" class="user-icon">
+        <p>Create an account</p>
+    </div>
+    <div [class.active]="showLogin" class="have-account" (click)="showLogin = true">
+        <img src="/image/user-alt-1-svgrepo-com (2).svg" class="user-icon">
+        <p>I have an account</p>
+    </div>
+</div>
+
+<!-- Registration Form -->
+<div class="account-container">
+    <div class="registration-form" *ngIf="!showLogin">
+        <h2>CREATE YOUR ACCOUNT</h2>
+
+        <p class="mandatory-notice">* Mandatory fields</p>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
+
+            <!-- Title Field -->
+            <div class="form-group">
+                <label for="title">Title</label>
+                <div class="select-container">
+                    <select id="title" formControlName="title">
+                        <option value="" disabled>Select</option>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Ms">Ms</option>
+                    </select>
+                    <div class="dropdown-arrow"></div>
+                </div>
+                <div class="validation-error"
+                    *ngIf="registerForm.get('title')?.invalid && registerForm.get('title')?.touched">
+                    - Title is required
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First name *</label>
+                    <input type="text" id="firstName" formControlName="firstName" placeholder="Your first name"
+                        [ngClass]="{'invalid-input': registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched}">
+                    <div class="validation-error"
+                        *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched">
+                        - First name is required
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="surname">Surname *</label>
+                    <input type="text" id="surname" formControlName="surname" placeholder="Your last name"
+                        [ngClass]="{'invalid-input': registerForm.get('surname')?.invalid && registerForm.get('surname')?.touched}">
+                    <div class="validation-error"
+                        *ngIf="registerForm.get('surname')?.invalid && registerForm.get('surname')?.touched">
+                        - Surname is required
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" formControlName="email" placeholder="Ex: example@tagheuer.com"
+                    [ngClass]="{'invalid-input': registerForm.get('email')?.invalid && registerForm.get('email')?.touched}">
+                <div class="validation-error"
+                    *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+                    <span *ngIf="registerForm.get('email')?.errors?.['required']">Email is required</span>
+                    <span *ngIf="registerForm.get('email')?.errors?.['email']">- Please enter a valid email
+                        address</span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="password">Password *</label>
+                    <div class="password-container">
+                        <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
+                            placeholder="Your password"
+                            [ngClass]="{'invalid-input': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}">
+                        <!-- Eye icon to toggle password visibility -->
+                        <div class="visibility-icon" (click)="togglePasswordVisibility()">
+                            <i *ngIf="!showPassword" class="fas fa-eye-slash"></i>
+                            <i *ngIf="showPassword" class="fas fa-eye"></i>
+                        </div>
+                    </div>
+                    <div class="validation-error"
+                        *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+                        <span *ngIf="registerForm.get('password')?.errors?.['required']" style="margin-right: 5px;">-
+                            Password is required </span>
+                        <span *ngIf="registerForm.get('password')?.errors?.['minlength']">- Password must be at least 8
+                            characters</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm your password *</label>
+                    <div class="password-container">
+                        <input [type]="showConfirmPassword ? 'text' : 'password'" id="confirmPassword"
+                            formControlName="confirmPassword" placeholder="Confirm your password"
+                            [ngClass]="{'invalid-input': (registerForm.get('confirmPassword')?.invalid || registerForm.errors?.['passwordMismatch']) && registerForm.get('confirmPassword')?.touched}">
+                        <!-- Eye icon to toggle confirm password visibility -->
+                        <div class="visibility-icon" (click)="toggleConfirmPasswordVisibility()">
+                            <i *ngIf="!showPassword" class="fas fa-eye-slash"></i>
+                            <i *ngIf="showPassword" class="fas fa-eye"></i>
+                        </div>
+                    </div>
+
+                    <div class="validation-error"
+                        *ngIf="(registerForm.get('confirmPassword')?.invalid || registerForm.errors?.['passwordMismatch']) && registerForm.get('confirmPassword')?.touched">
+                        <span *ngIf="registerForm.get('confirmPassword')?.errors?.['required']"
+                            style="margin-right: 5px;">- Please confirm your password </span>
+                        <span *ngIf="registerForm.errors?.['passwordMismatch']">- Passwords do not match</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="terms-section">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" formControlName="termsAccepted"
+                        [ngClass]="{'invalid-input': registerForm.get('termsAccepted')?.invalid && registerForm.get('termsAccepted')?.touched}">
+                    <label for="terms"
+                        [ngClass]="{'invalid-label': registerForm.get('termsAccepted')?.invalid && registerForm.get('termsAccepted')?.touched}">
+                        By checking this box, you confirm that you have read and understood our Terms of use. Also, you
+                        agree that your data will be processed by TAG Heuer as data controller, in conformity with its
+                        <a href="#">Privacy Policy</a>. Please refer to this privacy policy for all details surrounding
+                        the processing (including the transfer) of your data, as well as to learn more about your rights
+                        and choices regarding such processing.*
+                    </label>
+                </div>
+                <div class="validation-error terms-error"
+                    *ngIf="registerForm.get('termsAccepted')?.invalid && registerForm.get('termsAccepted')?.touched">
+                    You must accept the terms to continue
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="newsletter" formControlName="newsletterOptIn">
+                    <label for="newsletter">
+                        I would like to receive the latest news regarding TAG Heuer's products and services.
+                    </label>
+                </div>
+
+            </div>
+
+            <button type="submit" class="create-account-btn">CREATE YOUR MY TAG HEUER ACCOUNT</button>
+        </form>
+    </div>
+</div>
+<!-- Login Form -->
+<div class="account-container">
+    <div class="login-form" *ngIf="showLogin">
+        <h2>LOGIN TO YOUR ACCOUNT</h2>
+
+        <p class="mandatory-notice">* Mandatory fields</p>
+
+        <p class="login-info">Please enter your information to access your account</p>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+            <div class="form-group">
+                <label for="loginEmail">Email Address *</label>
+                <input type="email" id="loginEmail" formControlName="email" placeholder="Ex: example@tagheuer.com"
+                    [ngClass]="{'invalid-input': loginForm.get('email')?.invalid && loginForm.get('email')?.touched}">
+                <div class="validation-error"
+                    *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+                    <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</span>
+                    <span *ngIf="loginForm.get('email')?.errors?.['email']">Please enter a valid email address</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="loginPassword">Password *</label>
+                <div class="password-container">
+                    <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
+                        placeholder="Your password"
+                        [ngClass]="{'invalid-input': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}">
+                    <!-- Eye icon to toggle password visibility -->
+                    <div class="visibility-icon" (click)="togglePasswordVisibility()">
+                        <i *ngIf="!showPassword" class="fas fa-eye-slash"></i>
+                        <i *ngIf="showPassword" class="fas fa-eye"></i>
+                    </div>
+                </div>
+
+                <div class="validation-error"
+                    *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                    Password is required
+                </div>
+            </div>
+
+            <div class="privacy-confirmation">
+                <p>By logging into my account, I confirm that I have read and accept the <a href="#">Privacy Policy</a>
+                    of TAG Heuer.</p>
+            </div>
+
+            <button type="submit" class="login-btn">LOGIN</button>
+
+            <div class="forgotten-password">
+                <a href="#">Forgotten password?</a>
+            </div>
+        </form>
+    </div>
+</div>

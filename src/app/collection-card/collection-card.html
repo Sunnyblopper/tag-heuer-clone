@@ -1,0 +1,28 @@
+<div class="container">
+    <!-- Header Section -->
+    <div class="header">
+        <div class="logo">TAG HEUER</div>
+        <h1 class="title">COLLECTIONS</h1>
+        <button class="discover-btn">DISCOVER</button>
+        <div class="view-all">VIEW ALL WATCHES</div>
+    </div>
+
+    <!-- Collection Cards Section -->
+    <div class="collections">
+        <div *ngFor="let collection of collections" class="collection-card">
+            <div class="watch-image">
+                <img [src]="collection.imageUrl" alt="TAG Heuer {{ collection.name }}" />
+            </div>
+            <div class="collection-info">
+                <div class="collection-brand">TAG HEUER</div>
+                <div class="collection-name">{{ collection.name }}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full-width Image Section -->
+    <div class="full-width-image">
+        <img src="https://www.tagheuer.com/on/demandware.static/-/Library-Sites-TagHeuer-Shared/default/dwd2617a1e/images/collections/formula-one/Date/Solargraph/Marie-Louise.png"
+            alt="TAG Heuer Special Collection" />
+    </div>
+</div>

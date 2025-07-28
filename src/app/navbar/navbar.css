@@ -6,7 +6,10 @@
     background-color: white;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 14px;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     z-index: 9999;
 }
 
@@ -51,6 +54,7 @@
     display: inline-flex;
     align-items: center;
     padding-bottom: 4px;
+    cursor: pointer;
 }
 
 .hover-line::after {
@@ -76,6 +80,7 @@
     height: 100vh;
     overflow-x: hidden;
     z-index: 10000;
+    transition: left 0.5s ease-in-out;
     display: flex;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -94,7 +99,7 @@
 }
 
 .submenu-panel {
-    width: 33.5%;
+    width: 33%;
     background-color: rgb(255, 255, 255);
     padding: 15px;
     padding-left: 28px;
@@ -193,12 +198,27 @@
     display: block;
 }
 
+.right-panel {
+    width: 33.5%;
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+    padding-left: 28px;
+    border: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    z-index: 1001;
+    overflow-y: auto; /* Ensure content scrolls if it overflows */
+}
+
 .submenu-item {
     font-size: 12.5px;
     font-weight: 700;
     color: #000000;
     text-transform: uppercase;
     padding: 17px 0;
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
 }
@@ -256,3 +276,5 @@
 .footer-item:hover {
     color: #666;
 }
+
+

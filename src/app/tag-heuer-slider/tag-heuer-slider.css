@@ -1,0 +1,155 @@
+/* Default Styles */
+.watch-container {
+  max-width: 1520px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 63px 10px;
+  text-align: center;
+}
+
+.watch-container img {
+  width: 100%;
+  height: 530px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+.watch-info {
+  padding: 40px 20px;
+}
+
+.brand-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #000;
+}
+
+.model-name {
+  font-size: 1.45rem;
+  font-family: "Miedinger W01 Bold";
+  margin: 0 0 25px 0;
+}
+
+.explore-button {
+  display: inline-block;
+  padding: 11px 17px;
+  border: 1px solid #000;
+  background-color: transparent;
+  color: black;
+  text-decoration: none;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.explore-button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Responsive Design for 1248px to 300px */
+@media (max-width: 1248px) {
+  .watch-info {
+    padding: 35px 15px;
+  }
+  .model-name {
+    font-size: 1.3rem;
+  }
+  .explore-button {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .watch-container img {
+    height: 450px;
+  }
+}
+
+@media (max-width: 960px) {
+  .watch-container img {
+    height: 400px;
+  }
+}
+
+@media (max-width: 850px) {
+  .model-name {
+    font-size: 1.1rem;
+  }
+  .explore-button {
+    font-size: 0.8rem;
+    padding: 10px 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .watch-container img {
+    height: 350px;
+  }
+  .watch-info {
+    padding: 25px 10px;
+  }
+  .model-name {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .watch-container img {
+    height: 300px;
+  }
+  .model-name {
+    font-size: 0.9rem;
+  }
+  .explore-button {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .watch-container img {
+    height: 250px;
+  }
+  .model-name {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .watch-container img {
+    height: 230px;
+  }
+  .model-name {
+    font-size: 0.8rem;
+  }
+  .explore-button {
+    font-size: 0.6rem;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .watch-container img {
+    height: 200px;
+  }
+  .model-name {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 300px) {
+  .watch-container img {
+    height: 180px;
+  }
+  .model-name {
+    font-size: 0.7rem;
+  }
+  .explore-button {
+    font-size: 0.5rem;
+    padding: 6px 10px;
+  }
+}
