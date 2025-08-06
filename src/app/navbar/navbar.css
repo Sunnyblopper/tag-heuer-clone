@@ -139,6 +139,7 @@
     font-weight: 700;
     letter-spacing: 0.5px;
     padding: 0 15px;
+    cursor: pointer;
 }
 
 .menu-items {
@@ -278,3 +279,53 @@
 }
 
 
+.user-login-container {
+  position: relative;
+  display: inline-block;
+}
+
+.sign-in-popup {
+  position: absolute;
+  top: calc(100% + 16px);
+  right: 0;
+  z-index: 999;
+  min-width: 300px;
+}
+
+.user-popup {
+  min-width: 250px;
+  min-height: 100px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: #fff;
+}
+
+.user-info {
+  padding: 15px;
+  text-align: center;
+}
+
+.user-info p {
+  margin: 0 0 10px 0;
+  font-weight: 500;
+  color: #2e2e2e;
+}
+
+.sign-out-btn {
+  background: #000;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.sign-out-btn:hover {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+}

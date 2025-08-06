@@ -26,6 +26,7 @@ export class Register {
   // Login form
   loginForm!: FormGroup;
   showLoginPassword = false;
+  loginErrorMessage: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -41,7 +42,7 @@ export class Register {
   initRegisterForm(): void {
     this.registerForm = this.fb.group(
       {
-        title: ['', Validators.required], // Make the title field required
+        title: ['', Validators.required],
         firstName: ['', Validators.required],
         surname: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
@@ -122,15 +123,33 @@ export class Register {
       this.login.login(data).subscribe(
         (response: any) => {
           console.log('Login successful:', response);
-          localStorage.setItem('token', response?.data.token);
-          localStorage.setItem(
-            'loginedUser',
-            JSON.stringify(response?.data.user)
-          );
-          this.router.navigate(['/user']);
+          this.loginErrorMessage = null;
+          
+          // Store user data and token
+          if (response?.data?.token) {
+            localStorage.setItem('token', response.data.token);
+          }
+          
+          // Create a consistent user object for storage
+          const userData = {
+            ...response?.data?.user,
+            name: response?.data?.user?.name || 
+                  response?.data?.user?.first_name || 
+                  response?.data?.user?.firstName ||
+                  response?.data?.user?.email?.split('@')[0] ||
+                  'User'
+          };
+          
+          localStorage.setItem('loginedUser', JSON.stringify(userData));
+          
+          // Navigate to homepage and reload the page to refresh navbar
+          this.router.navigate(['/']).then(() => {
+            window.location.reload();
+          });
         },
         (error) => {
-          console.error('Login failed:', error.error);
+          console.error('Login failed:', error);
+          this.loginErrorMessage = error?.error?.message || 'Invalid email or password';
         }
       );
     } else {

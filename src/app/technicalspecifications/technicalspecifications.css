@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.container {
+  margin: 40px auto;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 20px;
+}
+
+.heading4 {
+  font-size: 1.0rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: #1a1a1a;
+  text-align: center;
+  margin: 0;
+}
+
+.note {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 0.8rem;
+  color: gray;
+}
+
+.specs-info-accordion {
+  display: flex;
+  gap: 1rem;
+  overflow: hidden;
+  padding: 0;
+}
+
+.card-header {
+   width: 306px;
+  height: 150px;
+  padding: 0;
+  display: flex;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-card {
+  width: 100%;
+  padding: 1rem;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s;
+  text-align: center;
+}
+
+.icon-with-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.icon-with-label span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0; 
+}
+
+.icon {
+  width: 15px;
+  height: 15px;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.btn-label {
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: #1a1a1a;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.text-gw {
+  font-size: 0.6rem;
+  color: #666;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1;
+}
+
+.toggle-icon {
+  font-size: 1rem;
+  color: #1a1a1a;
+  margin-top: 0.5rem;
+}
+
+.card-body-wrapper {
+  margin-top: 2rem;
+  margin-left: 10px;
+}
+
+.card-body .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.spec-col {
+  flex: 1 1 calc(33.333% - 1rem);
+  max-width: calc(33.333% - 1rem);
+}
+
+.card-body div {
+  margin: 0;
+  padding: 0.2rem 0;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.spec-title {
+  font-size: 0.58rem;
+  font-weight: 800;
+  color: #000;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: -8px;
+}
+
+.spec-value {
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: #555;
+  line-height: 1.2;
+}
+
+/* 1. ≤ 1248px */
+@media (max-width: 1248px) {
+  .specs-info-accordion {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card-header {
+    width: 280px;
+  }
+}
+
+/* 2. ≤ 1024px */
+@media (max-width: 1024px) {
+  .spec-col {
+    flex: 1 1 calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
+  }
+}
+
+/* 3. ≤ 900px */
+@media (max-width: 900px) {
+  .card-header {
+    width: 250px;
+    height: 140px;
+  }
+
+  .icon {
+    font-size: 1.4rem;
+  }
+}
+
+/* 4. ≤ 768px */
+@media (max-width: 768px) {
+  .spec-col {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .card-header {
+    width: 220px;
+  }
+
+  .heading4 {
+    font-size: 0.9rem;
+  }
+
+  .btn-label {
+    font-size: 0.65rem;
+  }
+
+  .text-gw {
+    font-size: 0.55rem;
+  }
+}
+
+/* 5. ≤ 600px */
+@media (max-width: 600px) {
+  .icon {
+    font-size: 1.2rem;
+  }
+
+  .toggle-icon {
+    font-size: 0.9rem;
+  }
+
+  .card-header {
+    width: 100%;
+    height: auto;
+  }
+
+  .btn-card {
+    padding: 0.8rem;
+  }
+}
+
+/* 6. ≤ 480px */
+@media (max-width: 480px) {
+  .btn-label {
+    font-size: 0.6rem;
+  }
+
+  .text-gw {
+    font-size: 0.5rem;
+  }
+
+  .heading4 {
+    font-size: 0.8rem;
+  }
+}
+
+/* 7. ≤ 375px */
+@media (max-width: 375px) {
+  .card-header {
+    padding: 0.5rem;
+  }
+
+  .btn-card {
+    flex-direction: column;
+  }
+}
+
+/* 8. ≤ 320px */
+@media (max-width: 320px) {
+  .icon {
+    font-size: 1rem;
+  }
+
+  .btn-label {
+    font-size: 0.55rem;
+  }
+
+  .text-gw {
+    font-size: 0.45rem;
+  }
+}
+
+/* 9. ≤ 300px */
+@media (max-width: 300px) {
+  .container {
+    padding: 10px;
+  }
+
+  .specs-info-accordion {
+    gap: 0.5rem;
+  }
+
+  .btn-card {
+    padding: 0.5rem;
+  }
+
+  .heading4 {
+    font-size: 0.75rem;
+  }
+
+  .note {
+    font-size: 0.65rem;
+  }
+}

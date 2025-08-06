@@ -1,0 +1,180 @@
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+}
+
+.row.no-gutters {
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.limit-width {
+  max-width: 407px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.paragraph2 {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: gray;
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+
+.col-12 img {
+  width: 100vw;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 1248px) {
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  .paragraph2 {
+    font-size: 1rem;
+  }
+
+  .limit-width {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 1247px) and (min-width: 1024px) {
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  .paragraph2 {
+    font-size: 0.95rem;
+  }
+
+  .limit-width {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 1023px) and (min-width: 900px) {
+  h2 {
+    font-size: 1.05rem;
+  }
+
+  .paragraph2 {
+    font-size: 0.95rem;
+  }
+
+  .limit-width {
+    max-width: 430px;
+  }
+}
+
+@media (max-width: 899px) and (min-width: 768px) {
+  h2 {
+    font-size: 1rem;
+  }
+
+  .paragraph2 {
+    font-size: 0.9rem;
+  }
+
+  .limit-width {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 767px) and (min-width: 640px) {
+  h2 {
+    font-size: 0.95rem;
+  }
+
+  .paragraph2 {
+    font-size: 0.85rem;
+  }
+
+  .limit-width {
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 639px) and (min-width: 480px) {
+  h2 {
+    font-size: 0.9rem;
+  }
+
+  .paragraph2 {
+    font-size: 0.8rem;
+  }
+
+  .limit-width {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 479px) and (min-width: 360px) {
+  h2 {
+    font-size: 0.85rem;
+  }
+
+  .paragraph2 {
+    font-size: 0.75rem;
+  }
+
+  .limit-width {
+    max-width: 330px;
+  }
+}
+
+@media (max-width: 359px) and (min-width: 320px) {
+  h2 {
+    font-size: 0.8rem;
+  }
+
+  .paragraph2 {
+    font-size: 0.7rem;
+  }
+
+  .limit-width {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 319px) {
+  h2 {
+    font-size: 0.75rem;
+  }
+
+  .paragraph2 {
+    font-size: 0.65rem;
+  }
+
+  .limit-width {
+    max-width: 280px;
+  }
+
+  .col-12 img {
+    width: 100%;
+  }
+}

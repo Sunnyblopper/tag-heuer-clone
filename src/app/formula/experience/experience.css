@@ -1,0 +1,147 @@
+/* General Layout */
+.experience-component {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.richtext-container {
+  text-align: center;
+}
+
+.title-banner {
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #000;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.richtext {
+  font-size: 10px;
+  color: #000;
+  line-height: 1.6;
+  font-weight: 500;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.component-image {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Media Queries for Responsiveness */
+
+/* 1248px and below */
+@media (max-width: 1248px) {
+  .title-banner {
+    font-size: 14px;
+  }
+
+  .richtext {
+    font-size: 9px;
+    max-width: 650px;
+  }
+}
+
+/* 1100px and below */
+@media (max-width: 1100px) {
+  .title-banner {
+    font-size: 13px;
+  }
+
+  .richtext {
+    font-size: 9px;
+    max-width: 600px;
+  }
+}
+
+/* 1000px and below */
+@media (max-width: 1000px) {
+  .title-banner {
+    font-size: 12px;
+  }
+
+  .richtext {
+    font-size: 8px;
+    max-width: 550px;
+  }
+}
+
+/* 900px and below */
+@media (max-width: 900px) {
+  .title-banner {
+    font-size: 11px;
+  }
+
+  .richtext {
+    font-size: 8px;
+    max-width: 500px;
+  }
+}
+
+/* 800px and below */
+@media (max-width: 800px) {
+  .title-banner {
+    font-size: 10px;
+  }
+
+  .richtext {
+    font-size: 8px;
+    max-width: 450px;
+  }
+}
+
+/* 700px and below */
+@media (max-width: 700px) {
+  .title-banner {
+    font-size: 9px;
+  }
+
+  .richtext {
+    font-size: 7px;
+    max-width: 400px;
+  }
+}
+
+/* 600px and below */
+@media (max-width: 600px) {
+  .title-banner {
+    font-size: 8px;
+  }
+
+  .richtext {
+    font-size: 7px;
+    max-width: 350px;
+  }
+}
+
+/* 500px and below */
+@media (max-width: 500px) {
+  .title-banner {
+    font-size: 7px;
+  }
+
+  .richtext {
+    font-size: 6px;
+    max-width: 300px;
+  }
+}
+
+/* 300px and below */
+@media (max-width: 300px) {
+  .title-banner {
+    font-size: 6px;
+  }
+
+  .richtext {
+    font-size: 5px;
+    max-width: 280px;
+  }
+}

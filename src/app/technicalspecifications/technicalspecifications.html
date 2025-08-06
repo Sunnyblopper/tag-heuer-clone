@@ -1,0 +1,46 @@
+<div class="container technical-spec specs-info">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="heading4">Technical specifications</h2>
+      <p class="note text-gb contrast-black-txt">
+        Reference number: WDA2112.BA0043
+      </p>
+    </div>
+
+    <div class="col-12">
+      <div class="specs-info-accordion">
+        <div class="card specs-info-card" *ngFor="let section of sections">
+          <div class="card-header" [id]="'heading' + section.id">
+            <button class="btn btn-link btn-card" type="button" (click)="toggleSection(section.id)">
+              <span class="icon-with-label text-uppercase">
+                <!-- Render image for icon -->
+                <img [src]="section.icon" alt="{{ section.title }} icon" class="spec-icon" />
+                <span>
+                  <span class="btn-label d-block"><strong>{{ section.title }}</strong></span>
+                  <span class="text-gw contrast-black-txt">{{ section.summary }}</span>
+                </span>
+              </span>
+              <span class="toggle-icon">{{ isActive(section.id) ? '−' : '+' }}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="card-body-wrapper" *ngIf="activeSection">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 spec-col" *ngFor="let item of getActiveSpecs()">
+              <p>
+                <span class="spec-title text-uppercase">{{ item.title }}</span>
+                <span class="spec-value">{{ item.value || 'Loading...' }}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

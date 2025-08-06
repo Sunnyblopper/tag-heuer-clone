@@ -26,9 +26,35 @@
                     d="M480.21-480Q510-480 531-501.21t21-51Q552-582 530.79-603t-51-21Q450-624 429-602.79t-21 51Q408-522 429.21-501t51 21ZM480-191q119-107 179.5-197T720-549q0-105-68.5-174T480-792q-103 0-171.5 69T240-549q0 71 60.5 161T480-191Zm0 95Q323.03-227.11 245.51-339.55 168-452 168-549q0-134 89-224.5T479.5-864q133.5 0 223 90.5T792-549q0 97-77 209T480-96Zm0-456Z" />
             </svg>
         </span>
-        <span class="hover-line" (click)="onregister()">
-            <img src="/image/user (1).svg" alt="User Icon" />
-        </span>
+
+        <!-- Not logged in -->
+        <div class="user-login-container" *ngIf="!loggedInUser" (mouseenter)="showLoginPopup = true"
+            (mouseleave)="onPopupMouseLeave()">
+            <span class="hover-line">
+                <img src="/image/user (1).svg" alt="User Icon" />
+            </span>
+
+            <div class="sign-in-popup" *ngIf="showLoginPopup" (mouseenter)="onPopupMouseEnter()"
+                (mouseleave)="onPopupMouseLeave()" (click)="onPopupClick($event)">
+                <app-sign-in-navbar (loginSuccess)="handleLoginSuccess($event)" />
+            </div>
+        </div>
+
+        <!-- Logged in -->
+        <div class="user-login-container" *ngIf="loggedInUser" (mouseenter)="onUserPopupMouseEnter()"
+            (mouseleave)="onUserPopupMouseLeave()">
+            <span class="hover-line">
+                <img src="/image/user (1).svg" alt="User Icon" />
+            </span>
+
+            <div class="sign-in-popup user-popup" *ngIf="showUserPopup">
+                <div class="user-info">
+                    <p>Hi, {{ getUserDisplayName() }}</p>
+                    <button class="sign-out-btn" (click)="signOut()">Sign out</button>
+                </div>
+            </div>
+
+        </div>
     </div>
 </nav>
 
@@ -41,7 +67,7 @@
             </svg>
             Close
         </button>
-        <div class="partnership-section">
+        <div class="partnership-section" (click)="formula()">
             <span class="partnership-label">FORMULA 1® PARTNERSHIP</span>
         </div>
         <div class="menu-items">

@@ -6,7 +6,7 @@
 
   <!-- Product Grid -->
   <div class="product-grid" #productGrid>
-    <div *ngFor="let product of products; let i = index" class="product-card">
+    <div *ngFor="let product of products; let i = index" class="product-card" (click)="goToProductPage(i)">
       <div class="image-carousel">
         <div class="image-carousel-inner">
           <img *ngFor="let img of product.images; let idx = index"

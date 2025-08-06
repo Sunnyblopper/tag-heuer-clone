@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Output,
+} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -19,42 +25,79 @@ import { Router } from '@angular/router';
 export class SignInNavbar {
   signInForm: FormGroup;
   showPassword = false;
+  formVisible = false;
+
+  @Output() loginSuccess = new EventEmitter<any>();
 
   constructor(
     private fb: FormBuilder,
     private loginService: Login,
-    private router: Router
+    private router: Router,
+    private eRef: ElementRef
   ) {
-    // Initialize the form with validation
     this.signInForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
   }
 
-  // Toggle the password visibility
+  ngOnInit(): void {}
+
+  // Toggle password visibility
   togglePassword(): void {
     this.showPassword = !this.showPassword;
   }
 
-  // Form submission
+  toggleForm(event: MouseEvent): void {
+    event.stopPropagation(); // Prevents it from immediately closing
+    this.formVisible = !this.formVisible;
+  }
+
+  @HostListener('document:click', ['$event'])
+  clickOutside(event: MouseEvent): void {
+    if (!this.eRef.nativeElement.contains(event.target)) {
+      this.formVisible = false;
+    }
+  }
+
   onSubmit(): void {
     if (this.signInForm.valid) {
       const { email, password } = this.signInForm.value;
-      this.loginService.login({ email, password })?.subscribe(
+
+      this.loginService.login({ email, password }).subscribe(
         (response: any) => {
-          console.log('Login successful:', response.data);
-          localStorage.setItem('token', response.data.token);
-          localStorage.setItem('loginedUser', JSON.stringify(response.data.user));
-          this.router.navigate(['/user']);
+          // Store token
+          if (response?.data?.token) {
+            localStorage.setItem('token', response.data.token);
+          }
+
+          // Create a normalized user object
+          const userData = {
+            ...response?.data?.user,
+            name:
+              response?.data?.user?.name ||
+              response?.data?.user?.first_name ||
+              response?.data?.user?.firstName ||
+              response?.data?.user?.email?.split('@')[0] ||
+              'User',
+          };
+
+          localStorage.setItem('loginedUser', JSON.stringify(userData));
+
+          this.loginSuccess.emit(response.data.user);
+
+          // Navigate and reload
+          this.router.navigate(['/']).then(() => {
+            window.location.reload();
+          });
         },
         (error: any) => {
-          console.error('Login error:', error);
+          console.error('Login failed:', error);
+          // Optional: Add user-facing error messages here
         }
       );
     } else {
       this.markFormGroupTouched(this.signInForm);
-      console.log('Form is invalid');
     }
   }
 
@@ -68,7 +111,6 @@ export class SignInNavbar {
     this.router.navigate(['/forgot-password']);
   }
 
-  // Navigate to create account page
   createAccount() {
     this.router.navigate(['/register']);
   }

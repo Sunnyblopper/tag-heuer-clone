@@ -1,6 +1,8 @@
+// watches-slider.ts
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-watches-slider',
@@ -8,7 +10,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   templateUrl: './watches-slider.html',
   styleUrl: './watches-slider.css',
 })
-export class WatchesSlider implements OnInit{
+export class WatchesSlider implements OnInit {
   @ViewChild('productGrid') productGrid!: ElementRef;
 
   products: any[] = [];
@@ -17,7 +19,7 @@ export class WatchesSlider implements OnInit{
   showLeftArrow = false;
   showRightArrow = true;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchWatches();
@@ -96,6 +98,13 @@ export class WatchesSlider implements OnInit{
     this.productGrid.nativeElement.scrollTo({
       left: offset,
       behavior: 'smooth',
+    });
+  }
+
+  goToProductPage(index: number): void {
+    const selectedProduct = this.products[index];
+    this.router.navigate(['/product', index], {
+      state: { product: selectedProduct },
     });
   }
 }

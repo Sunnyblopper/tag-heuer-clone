@@ -158,7 +158,11 @@
             <div class="form-group">
                 <label for="loginEmail">Email Address *</label>
                 <input type="email" id="loginEmail" formControlName="email" placeholder="Ex: example@tagheuer.com"
-                    [ngClass]="{'invalid-input': loginForm.get('email')?.invalid && loginForm.get('email')?.touched}">
+                    (input)="loginErrorMessage = null" [ngClass]="{
+                    'invalid-input':
+                    loginForm.get('email')?.invalid &&
+                    loginForm.get('email')?.touched
+                }" />
                 <div class="validation-error"
                     *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
                     <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</span>
@@ -170,9 +174,11 @@
                 <label for="loginPassword">Password *</label>
                 <div class="password-container">
                     <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
-                        placeholder="Your password"
-                        [ngClass]="{'invalid-input': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}">
-                    <!-- Eye icon to toggle password visibility -->
+                        placeholder="Your password" (input)="loginErrorMessage = null" [ngClass]="{
+                        'invalid-input':
+                            loginForm.get('password')?.invalid &&
+                            loginForm.get('password')?.touched
+                        }" />
                     <div class="visibility-icon" (click)="togglePasswordVisibility()">
                         <i *ngIf="!showPassword" class="fas fa-eye-slash"></i>
                         <i *ngIf="showPassword" class="fas fa-eye"></i>
@@ -186,15 +192,22 @@
             </div>
 
             <div class="privacy-confirmation">
-                <p>By logging into my account, I confirm that I have read and accept the <a href="#">Privacy Policy</a>
-                    of TAG Heuer.</p>
+                <p>
+                    By logging into my account, I confirm that I have read and accept the
+                    <a href="#">Privacy Policy</a> of TAG Heuer.
+                </p>
             </div>
 
             <button type="submit" class="login-btn">LOGIN</button>
+
+            <div class="validation-error" *ngIf="loginErrorMessage">
+                {{ loginErrorMessage }}
+            </div>
 
             <div class="forgotten-password">
                 <a href="#">Forgotten password?</a>
             </div>
         </form>
+
     </div>
 </div>
