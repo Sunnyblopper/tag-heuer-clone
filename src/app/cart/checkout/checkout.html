@@ -1,0 +1,142 @@
+<div class="address-container">
+    <div class="cart-progress">
+        <span class="step" [class.active]="currentStep === 'cart'" (click)="goTo('cart')">Cart</span>
+
+        <span class="step-separator">›</span>
+
+        <span class="step" [class.active]="currentStep === 'shipping'" (click)="goTo('shipping')">Shipping</span>
+
+        <span class="step-separator">›</span>
+
+        <span class="step" [class.active]="currentStep === 'payment'" (click)="goTo('payment')">Payment</span>
+    </div>
+
+    <div class="shipping-address-section">
+        <h2 class="section-title">SHIPPING ADDRESS</h2>
+
+        <div class="saved-addresses-container">
+            <div class="saved-addresses-header">YOUR SAVED ADDRESSES</div>
+
+            <div class="saved-addresses-content" *ngIf="savedAddresses.length === 0">
+                No address is registered
+            </div>
+
+            <div class="saved-address-item" *ngFor="let address of savedAddresses">
+                <div class="address-selection">
+                    <input type="radio" [id]="'address_' + address._id" name="selectedAddress" [value]="address._id"
+                        [checked]="selectedAddressId === address._id" (change)="selectAddress(address._id)" />
+                    <label [for]="'address_' + address._id" class="address-label">
+                        <div class="address-name">
+                            {{ address.name }} - {{ address.addressName }}
+                        </div>
+                        <div class="address-details">
+                            {{ address.address }}, {{ address.city }}, {{ address.region }}
+                        </div>
+                        <div class="address-details">
+                            {{ address.postal_code }}, {{ address.country }}
+                        </div>
+                        <div class="address-phone">{{ address.phone }}</div>
+                    </label>
+                </div>
+
+                <!-- Edit & Delete buttons -->
+                <div class="address-actions">
+                    <button class="edit-btn" (click)="editAddress(address)">Edit</button>
+                    <button class="delete-btn" (click)="deleteAddress(address._id)">
+                        Delete
+                    </button>
+                </div>
+            </div>
+
+            <button class="add-address-btn" (click)="openAddressModal()">
+                <span class="add-icon">+</span> ADD A NEW ADDRESS
+            </button>
+        </div>
+
+    </div>
+
+    <div class="order-summary-section">
+        <div class="confirm-order-container">
+            <button class="confirm-order-btn" (click)="confirmOrder()">
+                CONFIRM ORDER
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="address-modal-overlay" *ngIf="showAddressModal">
+        <div class="address-modal">
+            <div class="modal-header">
+                <h2>{{ editMode ? 'EDIT ADDRESS' : 'ADD AN ADDRESS' }}</h2>
+                <span class="mandatory-note">* Mandatory fields</span>
+                <button class="close-btn" (click)="closeAddressModal()">×</button>
+            </div>
+
+            <div class="modal-content">
+                <form [formGroup]="addressForm" (ngSubmit)="saveAddress()">
+                    <div class="form-group">
+                        <label for="addressName">Address Name</label>
+                        <input type="text" id="addressName" formControlName="addressName"
+                            placeholder="Home, Office, etc." />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" formControlName="name" placeholder="Your full name" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address *</label>
+                        <input type="text" id="address" formControlName="address"
+                            placeholder="Street address or P.O. Box" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">City *</label>
+                        <input type="text" id="city" formControlName="city" placeholder="City" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="region">Region/State *</label>
+                        <input type="text" id="region" formControlName="region" placeholder="State/Province/Region"
+                            required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="postal_code">Postal Code *</label>
+                        <input type="text" id="postal_code" formControlName="postal_code"
+                            placeholder="ZIP or Postal Code" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">Country *</label>
+                        <select id="country" formControlName="country" required>
+                            <option value="" disabled selected>Select a country</option>
+                            <option value="PK">Pakistan</option>
+                            <option value="IND">India</option>
+                            <option value="US">United States</option>
+                            <option value="CA">Canada</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="FR">France</option>
+                            <option value="DE">Germany</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" formControlName="phone" placeholder="Phone number" required />
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="save-btn">
+                            {{ editMode ? 'UPDATE' : 'SAVE' }}
+                        </button>
+                        <button type="button" class="cancel-btn" (click)="closeAddressModal()">
+                            CANCEL
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -42,7 +42,6 @@
                                 <span class="audio-time">{{ formatTime(audioCurrentTime) }}</span>
                                 <input class="ekoo-slidecontainer-range flex-grow-1 mx-2" type="range" min="0"
                                     [max]="audioDuration" [value]="audioCurrentTime"
-                                    (input)="onSeek($event, audioPlayer)" (change)="onSeek($event, audioPlayer)"
                                     [style.background]="getRangeBackground()">
                                 <span class="audio-time">{{ formatTime(audioDuration) }}</span>
                             </div>
@@ -63,8 +62,9 @@
 
                 </div>
 
-                <button class="shop-button" (click)="addToCart()">SHOP IN STORE</button>
-                <button class="shop-button mt-2" (click)="goToOrderByPhone()">ORDER BY PHONE</button>
+                <!-- Button to add product to cart -->
+                <button class="shop-button" (click)="addToCart()">ADD TO CART</button>
+
 
                 <!-- REVEAL SECTION -->
                 <div class="reveal-options" *ngIf="showMoreOptions">

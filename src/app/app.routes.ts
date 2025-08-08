@@ -6,6 +6,9 @@ import { Home } from './home/home';
 import { Register } from './register/register';
 import { Formula } from './formula/formula';
 import { Productpage } from './productpage/productpage';
+import { Cart } from './cart/cart';
+import { Checkout } from './cart/checkout/checkout';
+import { Order } from './cart/order/order';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -15,4 +18,8 @@ export const routes: Routes = [
   { path: 'register', component: Register},
   { path: 'formula', component: Formula},
   { path: 'product/:id', component: Productpage },
+  { path: 'cart', component: Cart},
+  { path: 'checkout', component: Checkout },
+  { path: 'orders', component: Order },
+  { path: "**", redirectTo: "home" }
 ];

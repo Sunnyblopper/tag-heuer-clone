@@ -5,11 +5,12 @@ import { Footer } from "./footer/footer";
 import { CollectionCard } from './collection-card/collection-card';
 import { Formula } from './formula/formula';
 import { Searchproduct } from './search/searchproduct/searchproduct';
+import { Cart } from "./cart/cart";
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, Footer,Searchproduct],
+  imports: [RouterOutlet, Navbar, Footer, Searchproduct, Cart],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

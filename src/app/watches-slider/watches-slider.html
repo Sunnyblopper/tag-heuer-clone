@@ -9,9 +9,8 @@
     <div *ngFor="let product of products; let i = index" class="product-card" (click)="goToProductPage(i)">
       <div class="image-carousel">
         <div class="image-carousel-inner">
-          <img *ngFor="let img of product.images; let idx = index"
-               [src]="img" 
-               [style.display]="idx === currentIndexes[i] ? 'block' : 'none'" />
+          <img *ngFor="let img of product.images; let idx = index" [src]="img"
+            [style.display]="idx === currentIndexes[i] ? 'block' : 'none'" />
         </div>
         <div class="inner-nav-arrow left" (click)="prevImage(i)">
           <i class="fas fa-chevron-left"></i>
@@ -42,8 +41,8 @@
 
 <!-- Navigation Dots -->
 <div class="navigation-dots">
-  <div *ngFor="let dot of products; let i = index" class="dot" 
-       [class.active]="i === currentIndex" (click)="goToSlide(i)"></div>
+  <div *ngFor="let dot of products; let i = index" class="dot" [class.active]="i === currentIndex"
+    (click)="goToSlide(i)"></div>
 </div>
 
 <!-- View All Button -->

@@ -1,0 +1,74 @@
+<div class="cart-container">
+  <div class="cart-progress">
+    <span class="step" [class.active]="currentStep === 'cart'" (click)="goTo('cart')">Cart</span>
+
+    <span class="step-separator">›</span>
+
+    <span class="step" [class.active]="currentStep === 'shipping'" (click)="goTo('shipping')">Shipping</span>
+
+    <span class="step-separator">›</span>
+
+    <span class="step" [class.active]="currentStep === 'payment'" (click)="goTo('payment')">Payment</span>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div class="loading" *ngIf="loading">
+    loading...
+  </div>
+
+  <!-- Cart Content -->
+  <div class="cart-content" *ngIf="!loading">
+    <div class="cart-items">
+      <div class="cart-header">
+        <h1>MY CART</h1>
+      </div>
+
+      <!-- If cart has items -->
+      <ng-container *ngIf="cartItems && cartItems.length > 0">
+        <ng-container *ngFor="let item of cartItems" class="cart-item-wrapper">
+          <app-watch [watchId]="item.watchId" [imageUrl]="item.imageUrl" [watchName]="item.watchName"
+            [watchModel]="item.watchModel" [watchQuantity]="item.watchQuantity" [price]="item.price"
+            [caseMaterial]="item.caseMaterial" [dialColor]="item.dialColor" [movement]="item.movement"
+            [caseSize]="item.caseSize" [quantity]="item.quantity" (cartUpdated)="onCartUpdated()">
+          </app-watch>
+        </ng-container>
+      </ng-container>
+
+      <!-- If cart is empty -->
+      <ng-container *ngIf="!cartItems || cartItems.length === 0">
+        <div class="empty-cart">
+          <p>Your cart is empty</p>
+          <button class="continue-shopping" (click)="goHome()">Continue Shopping</button>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Order Summary Section -->
+    <div class="order-summary">
+      <div class="summary-content">
+        <div class="summary-line">
+          <span>Subtotal</span>
+          <span class="amount">{{ subtotal | currency: 'USD' }}</span>
+        </div>
+        <div class="summary-line">
+          <span>Shipping</span>
+          <span class="free">{{ shipping || 'Free' }}</span>
+        </div>
+        <div class="summary-line">
+          <span>Taxes</span>
+          <span class="free">{{ taxes || 'Free' }}</span>
+        </div>
+        <div class="summary-divider"></div>
+        <div class="summary-line total">
+          <span>TOTAL</span>
+          <span class="amount">{{ total | currency: 'USD' }}</span>
+        </div>
+
+        <!-- Checkout Button -->
+        <button class="checkout-btn" [disabled]="!cartItems || cartItems.length === 0" (click)="proceedToCheckout()">
+          PROCEED TO CHECKOUT
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

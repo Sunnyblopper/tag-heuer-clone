@@ -4,6 +4,7 @@ import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Technicalspecifications } from '../technicalspecifications/technicalspecifications';
 import { Searchproduct } from '../search/searchproduct/searchproduct';
+import { Cartservice } from '../services/cartservice';
 
 @Component({
   selector: 'app-productpage',
@@ -68,7 +69,8 @@ export class Productpage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private cartService: Cartservice
   ) {}
 
   ngOnInit(): void {
@@ -132,12 +134,36 @@ export class Productpage implements OnInit {
   }
 
   addToCart(): void {
-    console.log(
-      `Added to cart: ${
-        this.product?.name || 'Product'
-      }, Price: $${this.getCurrentPrice()}`
+    const token = localStorage.getItem('token');
+    if (!token) {
+      this.router.navigate(['/login']);
+      alert('You need to log in to add items to the cart.');
+      return;
+    }
+
+    const cartItem = {
+      productId: this.product?._id,
+      productName: this.product?.name,
+      price: this.product?.price,
+      quantity: 1,  // Default quantity 1
+      image: this.mainImage || this.product.images[0], 
+      
+    };
+
+    console.log('Adding to Cart: ', cartItem); // Debugging log
+
+    this.cartService.addToCart(cartItem).subscribe(
+      (response) => {
+        this.router.navigate(['/cart']);
+        alert('Product added to cart successfully!');
+      },
+      (error) => {
+        console.error('Error adding product to cart:', error);
+        alert('Error adding product to cart. Please try again.');
+      }
     );
   }
+
 
   toggleAudio(audio: HTMLAudioElement): void {
     if (this.isAudioPlaying) {

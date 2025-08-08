@@ -1,0 +1,46 @@
+<div class="watch-card">
+  <div class="close-button" (click)="removeproduct()">&times;</div>
+  <div class="card">
+    <div class="watch-image">
+      <img [src]="imageUrl" />
+    </div>
+
+    <div class="watch-info">
+      <h3 class="watch-name">{{ watchName }}</h3>
+
+      <div class="watch-specs">
+        <div class="spec-row">
+          <span class="spec-label">Movement : </span>
+          <span class="spec-value">{{ movement }}</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Case Size : </span>
+          <span class="spec-value">{{ caseSize }}</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Case Material : </span>
+          <span class="spec-value">{{ caseMaterial }}</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Color : </span>
+          <span class="spec-value">{{ dialColor }}</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-label">Availability : </span>
+          <span class="spec-value">In Stock</span>
+        </div>
+      </div>
+
+      <div class="quantity-counter">
+        <span class="quantity-label">Quantity:</span>
+        <div class="counter-controls">
+          <button class="counter-btn" (click)="decrementQuantity($event)">-</button>
+          <span class="quantity-value">{{ watchQuantity }}</span>
+          <button class="counter-btn" (click)="incrementQuantity($event)">+</button>
+        </div>
+      </div>
+
+      <p class="watch-price">${{ price.toFixed(2) }}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,406 @@
+.address-container {
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 20px;
+}
+
+.cart-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+.step {
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.step.active {
+    font-weight: bold;
+    color: #000;
+}
+
+.step-separator {
+    margin: 0 10px;
+    color: #888;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.saved-addresses-container {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.saved-addresses-header {
+    background-color: #f5f5f5;
+    padding: 15px;
+    font-weight: bold;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.saved-addresses-content {
+    padding: 20px;
+    color: #666;
+}
+
+.saved-address-item {
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.saved-address-item:last-child {
+    border-bottom: none;
+}
+
+/* Address selection styling */
+.address-selection {
+    display: flex;
+    align-items: flex-start;
+}
+
+.address-selection input[type="radio"] {
+    margin-top: 4px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.address-label {
+    cursor: pointer;
+    flex: 1;
+}
+
+.address-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.address-details {
+    color: #666;
+    margin-bottom: 3px;
+}
+
+.address-phone {
+    color: #666;
+    font-style: italic;
+}
+
+.saved-address-item:hover {
+    background-color: #f9f9f9;
+}
+
+.order-summary-section {
+    margin-top: 20px;
+    padding: 15px;
+}
+
+.confirm-order-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.confirm-order-btn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 300px;
+}
+
+.confirm-order-btn:hover {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-order-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-order-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.add-address-btn {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    color: #000;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+}
+
+.add-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 18px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.billing-address {
+    margin-top: 20px;
+}
+
+.billing-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Modal Styling */
+.address-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.address-modal {
+    background-color: white;
+    width: 90%;
+    max-width: 600px;
+    padding: 20px 0;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.mandatory-note {
+    font-size: 0.8rem;
+    color: #666;
+    margin-left: auto;
+    margin-right: 30px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+}
+
+.modal-content {
+    padding: 20px;
+}
+
+.newsletter-note {
+    margin-bottom: 20px;
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #000;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.save-btn,
+.cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.save-btn {
+    background-color: #000;
+    color: #fff;
+}
+
+.cancel-btn {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+.address-actions {
+  display: flex;
+  gap: 10px; /* Buttons ke beech ka space */
+  margin-top: 8px;
+  margin-left: 30px;
+}
+
+.address-actions .edit-btn,
+.address-actions .delete-btn {
+  padding: 6px 14px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Edit Button Style */
+.address-actions .edit-btn {
+  background-color: #3498db; /* Blue */
+  color: white;
+}
+
+.address-actions .edit-btn:hover {
+  background-color: #2980b9; /* Darker Blue */
+  transform: scale(1.05);
+}
+
+/* Delete Button Style */
+.address-actions .delete-btn {
+  background-color: #e74c3c; /* Red */
+  color: white;
+}
+
+.address-actions .delete-btn:hover {
+  background-color: #c0392b; /* Darker Red */
+  transform: scale(1.05);
+}
+
+
+@media (max-width: 768px) {
+    .address-modal {
+        width: 95%;
+        max-height: 95vh;
+    }
+
+    .modal-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .mandatory-note {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 5px;
+    }
+
+    .close-btn {
+        top: 10px;
+        right: 10px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .save-btn,
+    .cancel-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .address-container {
+        padding: 10px;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 8px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .confirm-order-btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}

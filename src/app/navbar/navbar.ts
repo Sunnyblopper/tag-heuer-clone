@@ -188,7 +188,7 @@ export class Navbar {
       if (!this.isMouseOverPopup) {
         this.showLoginPopup = false;
       }
-    }, 3000);
+    }, 4000);
   }
 
   onPopupClick(event: MouseEvent) {
