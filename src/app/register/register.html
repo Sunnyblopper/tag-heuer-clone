@@ -1,3 +1,5 @@
+<!-- register.html - Fixed template with corrected password visibility -->
+
 <div class="account-options">
     <div [class.active]="!showLogin" class="create-account" (click)="showLogin = false">
         <img src="/image/user-plus-alt-1-svgrepo-com (1).svg" class="user-icon">
@@ -100,8 +102,8 @@
                             [ngClass]="{'invalid-input': (registerForm.get('confirmPassword')?.invalid || registerForm.errors?.['passwordMismatch']) && registerForm.get('confirmPassword')?.touched}">
                         <!-- Eye icon to toggle confirm password visibility -->
                         <div class="visibility-icon" (click)="toggleConfirmPasswordVisibility()">
-                            <i *ngIf="!showPassword" class="fas fa-eye-slash"></i>
-                            <i *ngIf="showPassword" class="fas fa-eye"></i>
+                            <i *ngIf="!showConfirmPassword" class="fas fa-eye-slash"></i>
+                            <i *ngIf="showConfirmPassword" class="fas fa-eye"></i>
                         </div>
                     </div>
 
@@ -145,6 +147,7 @@
         </form>
     </div>
 </div>
+
 <!-- Login Form -->
 <div class="account-container">
     <div class="login-form" *ngIf="showLogin">
@@ -173,15 +176,16 @@
             <div class="form-group">
                 <label for="loginPassword">Password *</label>
                 <div class="password-container">
-                    <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
+                    <!-- FIXED: Changed showPassword to showLoginPassword -->
+                    <input [type]="showLoginPassword ? 'text' : 'password'" id="loginPassword" formControlName="password"
                         placeholder="Your password" (input)="loginErrorMessage = null" [ngClass]="{
                         'invalid-input':
                             loginForm.get('password')?.invalid &&
                             loginForm.get('password')?.touched
                         }" />
-                    <div class="visibility-icon" (click)="togglePasswordVisibility()">
-                        <i *ngIf="!showPassword" class="fas fa-eye-slash"></i>
-                        <i *ngIf="showPassword" class="fas fa-eye"></i>
+                    <div class="visibility-icon" (click)="toggleLoginPasswordVisibility()">
+                        <i *ngIf="!showLoginPassword" class="fas fa-eye-slash"></i>
+                        <i *ngIf="showLoginPassword" class="fas fa-eye"></i>
                     </div>
                 </div>
 

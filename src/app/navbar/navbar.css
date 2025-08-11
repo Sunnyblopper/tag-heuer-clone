@@ -329,3 +329,14 @@
   color: #000;
   border: 1px solid #000;
 }
+
+.orders-icon {
+  margin-left: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+}
+
+.orders-icon svg:hover {
+  fill: #555;
+}

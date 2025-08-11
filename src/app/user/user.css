@@ -1,0 +1,190 @@
+.main {
+    width: 100%;
+    font-family: Arial, sans-serif;
+    margin: 80px 0;
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 0;
+    background-color: #fff;
+    position: relative;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 50px;
+    position: absolute;
+    left: 0;
+}
+
+.user-info h2 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.user-info a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.user-info a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+}
+
+.option-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
+    height: 100%;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.option-item.active {
+    border-bottom: 3px solid #000;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.icon img, i {
+    width: 24px;
+    height: 24px;
+    opacity: 0.7;
+}
+
+.label {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.option-item.active .label {
+    color: #000;
+}
+
+.option-item.active .icon img {
+    opacity: 1;
+}
+
+.option-item:hover {
+    background-color: #f9f9f9;
+}
+
+
+/* 1248px and below */
+@media (max-width: 1248px) {
+    .option-item {
+        padding: 12px 18px;
+    }
+}
+
+/* 1100px and below */
+@media (max-width: 1100px) {
+    .label {
+        font-size: 13px;
+    }
+    .icon img, i {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+/* 992px and below */
+@media (max-width: 992px) {
+    .options {
+        justify-content: space-around;
+    }
+    .option-item {
+        padding: 10px 15px;
+    }
+}
+
+/* 850px and below */
+@media (max-width: 850px) {
+    .label {
+        font-size: 12px;
+    }
+    .icon img, i {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* 768px and below */
+@media (max-width: 768px) {
+    .user-info {
+        display: none;
+    }
+    .options {
+        justify-content: space-between;
+        padding: 0 10px;
+    }
+}
+
+/* 650px and below */
+@media (max-width: 650px) {
+    .label {
+        display: none; /* icons only */
+    }
+    .option-item {
+        padding: 8px 10px;
+    }
+}
+
+/* 500px and below */
+@media (max-width: 500px) {
+    .icon img, i {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* 400px and below */
+@media (max-width: 400px) {
+    .option-item {
+        padding: 6px 8px;
+    }
+}
+
+/* 300px and below */
+@media (max-width: 300px) {
+    .options {
+        flex-direction: column;
+        align-items: center;
+    }
+    .option-item {
+        width: 100%;
+        border-bottom: 1px solid #ddd;
+    }
+}

@@ -1,0 +1,42 @@
+<div class="profile-container">
+    <div class="profile-column">
+
+        <div class="profile-section">
+            <div class="section-title">
+                PERSONAL INFORMATION
+            </div>
+
+            <div *ngIf="!editMode" class="content-box user-info">
+                <div class="info-item"><i class="fa-solid fa-envelope"></i> {{ user.email }}</div>
+                <div class="info-item"><i class="fa-solid fa-phone"></i> {{ user.phone }}</div>
+
+            </div>
+        </div>
+
+        <!-- Address Section -->
+        <div class="profile-section address-section">
+            <div class="section-title">MY ADDRESS</div>
+            <div class="content-box">
+                <div class="subsection-title">YOUR SAVED ADDRESSES</div>
+                <div class="empty-message" *ngIf="!addressesRegistered">No address registered yet.</div>
+                <div class="address-list" *ngIf="addressesRegistered">
+                    <div class="address-item" *ngFor="let address of savedAddresses">
+                        <div class="address-content">
+                            <div>{{ address.name }}</div>
+                            <div>{{ address.address }}</div>
+                            <div>{{ address.city }}, {{ address.postal_code }}</div>
+                            <div>{{ address.country }}</div>
+                            <div>{{ address.phone }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-button" (click)="addNewAddress()">
+                    <div class="plus-icon">+</div> ADD A NEW ADDRESS
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<app-checkout *ngIf="openAddress" (close)="closeAddress()"></app-checkout>

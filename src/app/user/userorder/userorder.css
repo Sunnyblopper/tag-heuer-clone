@@ -1,0 +1,184 @@
+.orders-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.loading, .error, .no-orders {
+  padding: 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+.error {
+  color: #d9534f;
+  background-color: #fdf7f7;
+  border: 1px solid #f4cecd;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+}
+
+.order-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status.pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status.shipped {
+  background-color: #cce5ff;
+  color: #004085;
+}
+
+.status.delivered {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status.cancelled {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.order-details {
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.products {
+  flex: 1;
+  min-width: 300px;
+}
+
+.products h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.product-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.product-item:last-child {
+  border-bottom: none;
+}
+
+.order-summary {
+  flex: 1;
+  min-width: 300px;
+}
+
+.order-summary p {
+  margin: 5px 0;
+}
+
+.order-summary {
+  flex: 1;
+  min-width: 300px;
+}
+
+.order-summary p {
+  margin: 5px 0;
+}
+
+.order-actions {
+  display: flex;
+  gap: 10px;
+  /* margin-top: 10px; */
+  flex-direction: column;
+}
+
+.order-actions button {
+  padding: 8px 16px;
+  /* width: 50px; */
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Pay Now button styling */
+.btn-pay {
+  background-color: #ff9800;
+  color: white;
+}
+
+.btn-pay:hover:not(:disabled) {
+  background-color: #e68900;
+}
+
+/* Confirm Order button styling */
+.btn-confirm {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn-confirm:hover:not(:disabled) {
+  background-color: #3e8e41;
+}
+
+/* Disabled state */
+button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+
+@media (max-width: 768px) {
+  .order-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .order-details {
+    flex-direction: column;
+  }
+}

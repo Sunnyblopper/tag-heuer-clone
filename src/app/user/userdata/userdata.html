@@ -1,0 +1,25 @@
+<div class="main" style="
+background: url(https://www.tagheuer.com/on/demandware.static/-/Library-Sites-TagHeuer-Shared/default/dw725f9a66/images/mytagheuer/homepage-topbanner.jpg);
+">
+    <div class="container">
+        <div class="email"><i class="fa-solid fa-envelope"></i>{{ email || 'No email found' }}</div>
+        <div class="edit"><span><i class="fa-solid fa-user-pen"></i></span><a href="">EDIT MY INFORMATION</a></div>
+    </div>
+</div>
+
+<div class="help-section">
+    <div class="container">
+        <h2 class="help-title">WE ARE HERE TO HELP</h2>
+        <p class="help-text">Do you have a question about TAG Heuer products or services?</p>
+        <p class="help-subtext">We are here for you.</p>
+
+        <div class="help-contact" (click)="contact()">
+            <a href="tel:1-855-TAG-1860" class="contact-phone">
+                <i class="fa-solid fa-phone"></i> 1-850-TAG-1950
+            </a>
+            <a href="#" class="contact-us" (click)="contact()">
+                <i class="fa-solid fa-envelope"></i> CONTACT US
+            </a>
+        </div>
+    </div>
+</div>

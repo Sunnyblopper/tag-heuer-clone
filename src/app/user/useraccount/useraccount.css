@@ -1,0 +1,243 @@
+.profile-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.profile-column {
+  flex: 1;
+  min-width: 300px;
+}
+
+.profile-section {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.content-box {
+  background: #fafafa;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.user-info {
+  font-size: 0.95rem;
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.info-item {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #555;
+}
+
+.info-item i {
+  color: black;
+}
+
+.action-menu {
+  margin-top: 15px;
+}
+
+.action-item {
+  color: #000;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.user-form .form-group {
+  margin-bottom: 12px;
+}
+
+.user-form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.user-form input,
+.user-form select {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.submit-btn {
+  background: #000;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #fff;
+    border: 1px solid black;
+    color: #000;
+}
+
+.cancel-btn {
+  background: #ccc;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.address-section .address-list {
+  margin-top: 10px;
+}
+
+.address-item {
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.add-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #000;
+  color: white;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.add-button:hover {
+    background-color: #fff;
+    border: 1px solid black;
+    color: #000;
+}
+
+.plus-icon {
+  background: white;
+  color: #000;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+
+@media (max-width: 1248px) {
+  .profile-container {
+    max-width: 1000px;
+  }
+}
+
+/* 2. Max width 1100px */
+@media (max-width: 1100px) {
+  .profile-container {
+    padding: 15px;
+    gap: 15px;
+  }
+  .profile-column {
+    min-width: 280px;
+  }
+}
+
+/* 3. Max width 992px */
+@media (max-width: 992px) {
+  .profile-container {
+    flex-direction: column;
+  }
+}
+
+/* 4. Max width 900px */
+@media (max-width: 900px) {
+  .section-title {
+    font-size: 1rem;
+  }
+  .user-name {
+    font-size: 1.1rem;
+  }
+}
+
+/* 5. Max width 768px */
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 10px;
+  }
+  .user-form input,
+  .user-form select {
+    font-size: 0.9rem;
+  }
+}
+
+/* 6. Max width 600px */
+@media (max-width: 600px) {
+  .info-item {
+    font-size: 0.9rem;
+  }
+  .form-actions {
+    flex-direction: column;
+  }
+  .form-actions button {
+    width: 100%;
+  }
+}
+
+/* 7. Max width 480px */
+@media (max-width: 480px) {
+  .section-title {
+    text-align: center;
+  }
+  .profile-section {
+    padding: 15px;
+  }
+  .user-name {
+    text-align: center;
+  }
+}
+
+/* 8. Max width 300px */
+@media (max-width: 300px) {
+  .profile-container {
+    padding: 5px;
+  }
+  .user-form input,
+  .user-form select {
+    padding: 6px;
+  }
+  .add-button {
+    font-size: 0.85rem;
+  }
+}

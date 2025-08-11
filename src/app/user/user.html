@@ -1,0 +1,27 @@
+<div class="main">
+    <div class="head">
+        <div class="options">
+            <div class="option-item" [class.active]="activeOption === 'my-tag-heuer'" (click)="setActive('my-tag-heuer')">
+                <div class="icon">
+                    <img src="https://account.tagheuer.com/icons/my-tag-heuer.svg" alt="TAG Heuer">
+                </div>
+                <div class="label">My TAG Heuer</div>
+            </div>
+            <div class="option-item" [class.active]="activeOption === 'my-orders'" (click)="setActive('my-orders')">
+                <div class="icon">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                <div class="label">My orders</div>
+            </div>
+            <div class="option-item" [class.active]="activeOption === 'my-account'" (click)="setActive('my-account')">
+                <div class="icon">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="label">My account</div>
+            </div>
+        </div> 
+    </div>
+</div>
+<app-userdata *ngIf="activeOption === 'my-tag-heuer'"></app-userdata>
+<app-userorder *ngIf="activeOption === 'my-orders'"></app-userorder>
+<app-useraccount *ngIf="activeOption === 'my-account'"></app-useraccount>

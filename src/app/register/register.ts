@@ -25,7 +25,7 @@ export class Register {
 
   // Login form
   loginForm!: FormGroup;
-  showLoginPassword = false;
+  showLoginPassword = false; // Fixed: separate variable for login password visibility
   loginErrorMessage: string | null = null;
 
   constructor(
@@ -120,30 +120,52 @@ export class Register {
         email: this.loginForm.value.email,
         password: this.loginForm.value.password,
       };
+      
       this.login.login(data).subscribe(
         (response: any) => {
           console.log('Login successful:', response);
           this.loginErrorMessage = null;
-          
-          // Store user data and token
+
+          // Store token if available
           if (response?.data?.token) {
             localStorage.setItem('token', response.data.token);
           }
-          
-          // Create a consistent user object for storage
+
+          // Enhanced user data creation with better email handling
           const userData = {
-            ...response?.data?.user,
-            name: response?.data?.user?.name || 
-                  response?.data?.user?.first_name || 
+            // Spread any existing user data from response
+            ...(response?.data?.user || response?.data || {}),
+            
+            // Always ensure email is set (priority order)
+            email: response?.data?.user?.email || 
+                   response?.data?.user?.user_email ||
+                   response?.data?.email ||
+                   response?.email ||
+                   data.email, // fallback to the email used for login
+            
+            // Set name with fallbacks
+            name: response?.data?.user?.name ||
+                  response?.data?.user?.first_name ||
                   response?.data?.user?.firstName ||
-                  response?.data?.user?.email?.split('@')[0] ||
-                  'User'
+                  response?.data?.name ||
+                  data.email.split('@')[0] ||
+                  'User',
+            
+            // Include other common properties that might be useful
+            id: response?.data?.user?.id || response?.data?.id,
+            first_name: response?.data?.user?.first_name || response?.data?.first_name,
+            last_name: response?.data?.user?.last_name || response?.data?.last_name,
+            
+            // Store the original login email as backup
+            loginEmail: data.email
           };
-          
+
+          console.log('Storing user data:', userData);
           localStorage.setItem('loginedUser', JSON.stringify(userData));
-          
-          // Navigate to homepage and reload the page to refresh navbar
-          this.router.navigate(['/']).then(() => {
+
+          // Navigate to user page
+          this.router.navigate(['/user']).then(() => {
+            // Optional: reload to ensure all components refresh with new data
             window.location.reload();
           });
         },

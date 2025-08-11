@@ -70,18 +70,17 @@
         <div class="col-12">
             <div class="search-results col-lg-12">
                 <ol class="ais-Hits-list">
-                    <li class="ais-Hits-item" *ngFor="let product of searchResults">
+                    <li class="ais-Hits-item" *ngFor="let product of searchResults; let i = index"
+                        (click)="goToProductPage(product, i)">
                         <div class="product-tile">
                             <div class="image-container">
-                                <a [href]="product.link" target="_blank" rel="noopener">
+                                <a href="#" (click)="$event.preventDefault()">
                                     <img *ngIf="product.imageSmall" class="tile-image" [src]="product.imageSmall"
                                         [alt]="product.name" />
                                 </a>
                             </div>
                             <div class="tile-body">
-                                <p class="pdp-link">
-                                    <a [href]="product.link" target="_blank" rel="noopener">{{ product.name }}</a>
-                                </p>
+                                <p class="pdp-link">{{ product.name }}</p>
                                 <p class="tile-attributes text-gw">{{ product.description }}</p>
                             </div>
                         </div>
@@ -90,5 +89,4 @@
             </div>
         </div>
     </div>
-
 </div>

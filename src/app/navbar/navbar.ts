@@ -158,6 +158,10 @@ export class Navbar {
     this.router.navigate(['/register']);
   }
 
+  goToOrders() {
+    this.router.navigate(['/user']);
+  }
+
   requestAppointment() {
     console.log('Request an appointment clicked');
   }

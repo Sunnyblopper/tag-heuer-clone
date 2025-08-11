@@ -9,6 +9,7 @@ import { Productpage } from './productpage/productpage';
 import { Cart } from './cart/cart';
 import { Checkout } from './cart/checkout/checkout';
 import { Order } from './cart/order/order';
+import { User } from './user/user';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -20,6 +21,7 @@ export const routes: Routes = [
   { path: 'product/:id', component: Productpage },
   { path: 'cart', component: Cart},
   { path: 'checkout', component: Checkout },
+  { path: 'user', component: User},
   { path: 'orders', component: Order },
   { path: "**", redirectTo: "home" }
 ];

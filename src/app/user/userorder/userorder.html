@@ -1,0 +1,47 @@
+<div class="orders-container">
+    <h2>My Orders</h2>
+
+    <div *ngIf="loading" class="loading">Loading orders...</div>
+    <div *ngIf="error" class="error">{{ error }}</div>
+    <div *ngIf="!loading && !error && orders.length === 0" class="no-orders">
+        You haven't placed any orders yet.
+    </div>
+
+    <div *ngIf="!loading && orders.length > 0" class="orders-list">
+        <div *ngFor="let order of orders; let i = index" class="order-card">
+            <div class="order-header">
+                <h3>Order ID: {{ order._id }}</h3>
+                <span class="status" [ngClass]="order.status">Status: {{ order.status }}</span>
+            </div>
+
+            <div class="order-details">
+                <div class="products">
+                    <h4>Products</h4>
+                    <ul>
+                        <li *ngFor="let item of order.products" class="product-item">
+                            <span class="product-name">{{ item.product?.name }}</span>
+                            <span class="quantity">Qty: {{ item.quantity }}</span>
+                            <span class="price">${{ item.price.toFixed(2) }}</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="order-summary">
+                    <p><strong>Address:</strong> {{ address[i]?.address || 'No address found' }}</p>
+                    <p><strong>Total Price:</strong> ${{ order.total_price.toFixed(2) }}</p>
+                    <p *ngIf="order.createdAt"><strong>Order Date:</strong> {{ order.createdAt | date }}</p>
+                </div>
+                <div class="order-actions">
+                    <button class="btn-pay" (click)="payOrder(order._id)">
+                        Pay Now
+                    </button>
+
+                    <button class="btn-confirm" (click)="confirmOrder(order._id)">
+                        Confirm Order
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>

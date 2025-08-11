@@ -87,7 +87,7 @@ export class SignInNavbar {
           this.loginSuccess.emit(response.data.user);
 
           // Navigate and reload
-          this.router.navigate(['/']).then(() => {
+          this.router.navigate(['/user']).then(() => {
             window.location.reload();
           });
         },
