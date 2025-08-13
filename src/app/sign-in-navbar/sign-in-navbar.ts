@@ -61,45 +61,62 @@ export class SignInNavbar {
   }
 
   onSubmit(): void {
-    if (this.signInForm.valid) {
-      const { email, password } = this.signInForm.value;
+  if (this.signInForm.valid) {
+    const { email, password } = this.signInForm.value;
 
-      this.loginService.login({ email, password }).subscribe(
-        (response: any) => {
-          // Store token
-          if (response?.data?.token) {
-            localStorage.setItem('token', response.data.token);
-          }
-
-          // Create a normalized user object
-          const userData = {
-            ...response?.data?.user,
-            name:
-              response?.data?.user?.name ||
-              response?.data?.user?.first_name ||
-              response?.data?.user?.firstName ||
-              response?.data?.user?.email?.split('@')[0] ||
-              'User',
-          };
-
-          localStorage.setItem('loginedUser', JSON.stringify(userData));
-
-          this.loginSuccess.emit(response.data.user);
-
-          // Navigate and reload
-          this.router.navigate(['/user']).then(() => {
-            window.location.reload();
-          });
-        },
-        (error: any) => {
-          console.error('Login failed:', error);
-          // Optional: Add user-facing error messages here
+    this.loginService.login({ email, password }).subscribe(
+      (response: any) => {
+        // Store token if available
+        if (response?.data?.token || response?.token) {
+          localStorage.setItem('token', response.data?.token || response.token);
         }
-      );
-    } else {
-      this.markFormGroupTouched(this.signInForm);
-    }
+
+        // Create a full, consistent userData object like in register page
+        const userData = {
+          id: response?.data?.user?.id || response?.data?.id || response?.id,
+          email: response?.data?.user?.email || response?.data?.email || email,
+          name: response?.data?.user?.name ||
+                response?.data?.name ||
+                response?.name,
+          first_name: response?.data?.user?.first_name ||
+                      response?.data?.first_name,
+          last_name: response?.data?.user?.last_name ||
+                     response?.data?.last_name,
+          title: response?.data?.user?.title || response?.data?.title,
+          username: response?.data?.user?.username || response?.data?.username,
+          loginEmail: email,
+          ...(response?.data?.user || {}),
+          ...(response?.data || {}),
+          loginTimestamp: new Date().toISOString()
+        };
+
+        // Save to localStorage
+        localStorage.setItem('loginedUser', JSON.stringify(userData));
+
+        // Dispatch event so navbar updates instantly
+        window.dispatchEvent(new StorageEvent('storage', {
+          key: 'loginedUser',
+          newValue: JSON.stringify(userData),
+          oldValue: null,
+          storageArea: localStorage
+        }));
+
+        this.loginSuccess.emit(userData);
+
+        // Navigate and reload to reflect changes
+        this.router.navigate(['/user']).then(() => {
+          setTimeout(() => window.location.reload(), 100);
+        });
+      },
+      (error: any) => {
+        console.error('Login failed:', error);
+      }
+    );
+  } else {
+    this.markFormGroupTouched(this.signInForm);
   }
+}
+
 
   markFormGroupTouched(formGroup: FormGroup): void {
     Object.values(formGroup.controls).forEach((control) => {

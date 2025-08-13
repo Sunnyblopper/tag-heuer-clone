@@ -9,11 +9,11 @@
 
     <div class="col-12">
       <div class="specs-info-accordion">
-        <div class="card specs-info-card" *ngFor="let section of sections">
+        <div class="card specs-info-card" *ngFor="let section of sections"
+          [ngClass]="{ 'active-card': isActive(section.id) }">
           <div class="card-header" [id]="'heading' + section.id">
             <button class="btn btn-link btn-card" type="button" (click)="toggleSection(section.id)">
               <span class="icon-with-label text-uppercase">
-                <!-- Render image for icon -->
                 <img [src]="section.icon" alt="{{ section.title }} icon" class="spec-icon" />
                 <span>
                   <span class="btn-label d-block"><strong>{{ section.title }}</strong></span>

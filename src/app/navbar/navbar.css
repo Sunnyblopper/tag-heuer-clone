@@ -71,6 +71,51 @@
 .hover-line:hover::after {
     width: 100%;
 }
+.hovers-line {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding-bottom: 4px;
+    cursor: pointer;
+}
+
+.hovers-line::after {
+    content: '';
+    position: absolute;
+    left: 15px;
+    bottom: -2px;
+    height: 1px;
+    width: 0;
+    background-color: red;
+    transition: width 0.3s ease;
+}
+
+.hovers-line:hover::after {
+    width: 85%;
+}
+
+.hover-lines {
+    position: relative;
+    display: inline-block;
+    align-items: center;
+    padding-bottom: 4px;
+    cursor: pointer;
+}
+
+.hover-lines::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 0;
+    background-color: black;
+    transition: width 0.3s ease;
+}
+
+.hover-lines:hover::after {
+    width: 100%;
+}
 
 .menu-wrapper {
     position: fixed;
@@ -79,17 +124,30 @@
     width: 100%;
     height: 100vh;
     overflow-x: hidden;
+    overflow: hidden;
     z-index: 10000;
     transition: left 0.5s ease-in-out;
     display: flex;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    animation: slideInFromLeft 0.2s ease-out forwards;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-90px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .navigation-menu {
     width: 33.5%;
     padding: 12px;
     background: white;
-    /* box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1); */
     border: 1px solid #ddd;
     z-index: 2000;
     position: fixed;
@@ -165,8 +223,25 @@
     border: none;
     cursor: pointer;
     text-align: left;
+    position: relative;
 }
 
+.menu-button .hover-lines {
+    display: inline-block;
+    position: relative;
+}
+
+.menu-button:hover .hover-lines::after {
+    width: 100%;
+}
+
+.partnership-section:hover .hovers-line::after {
+    width: 86%;
+}
+
+.footer-item:hover .hover-lines::after {
+    width: 100%;
+}
 .menu-button svg {
     color: #000000;
 }
@@ -179,9 +254,6 @@
     text-transform: uppercase;
 }
 
-.menu-button:hover .menu-title {
-    color: #666;
-}
 
 .chevron {
     transition: transform 0.3s ease;
@@ -210,7 +282,8 @@
     right: 0;
     height: 100vh;
     z-index: 1001;
-    overflow-y: auto; /* Ensure content scrolls if it overflows */
+    overflow-y: auto;
+    /* Ensure content scrolls if it overflows */
 }
 
 .submenu-item {
@@ -257,10 +330,10 @@
 }
 
 .footer-items {
-    padding: 0 15px 60px;
+    padding: 0 15px 20px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 8px;
 }
 
 .footer-item {
@@ -274,69 +347,161 @@
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.footer-item:hover {
-    color: #666;
-}
-
-
 .user-login-container {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .sign-in-popup {
-  position: absolute;
-  top: calc(100% + 16px);
-  right: 0;
-  z-index: 999;
-  min-width: 300px;
+    position: absolute;
+    top: calc(100% + 3px);
+    right: 0;
+    z-index: 999;
+    min-width: 300px;
 }
 
 .user-popup {
-  min-width: 250px;
-  min-height: 100px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  background-color: #fff;
+    min-width: 280px;
+    min-height: 100px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: #fff;
 }
 
-.user-info {
-  padding: 15px;
-  text-align: center;
+/* .user-info {
+    padding: 15px;
+    text-align: center;
 }
 
 .user-info p {
-  margin: 0 0 10px 0;
-  font-weight: 500;
-  color: #2e2e2e;
+    margin: 0 0 10px 0;
+    font-weight: 500;
+    color: #2e2e2e;
 }
 
 .sign-out-btn {
-  background: #000;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
-  width: 100%;
+    background: #000;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    width: 100%;
 }
 
 .sign-out-btn:hover {
-  background: #fff;
-  color: #000;
-  border: 1px solid #000;
-}
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+} */
 
 .orders-icon {
-  margin-left: 8px;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
+    margin-left: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
 }
 
 .orders-icon svg:hover {
-  fill: #555;
+    fill: #555;
 }
+
+.orders-icon {
+    margin-left: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+.orders-icon svg:hover {
+    fill: #555;
+}
+
+.user-container {
+    background-color: white;
+    text-align: center;
+    border: 1px solid rgb(243, 240, 240);
+    padding: 30px 10px 10px 10px;
+    
+  }
+
+.user-icon {
+    font-size: 20px;
+    height: 45px; 
+    width: 45px; 
+    background-color: rgb(0, 0, 0); 
+    border-radius: 50%;
+}
+
+.user-icon img{
+    width: 30px;
+}
+
+  .welcome-message {
+    font-size: 15px;
+    padding: 8px 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  .account-button {
+    background-color: black;
+    color: white;
+    padding: 15px 22px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    border: none;
+    word-spacing: 1px;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .account-button:hover {
+    background-color: #fff;
+    border: 1px solid black;
+    color: #000000;
+    transition: ease-in 0.19s;
+  }
+
+  .sign-out {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    color: black;
+  }
+
+  .sign-out:hover {
+    text-decoration: none;
+  }
+  
+  .quick-access {
+    padding: 20px;
+  }
+  
+  .quick-access h3 {
+    margin-bottom: 10px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  
+  .access-links {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .access-links div {
+    padding:  98px;
+    font-size: 9px;
+    padding: 8px;
+    font-size: 9px;
+    width: 40%;
+    box-sizing: border-box;
+  }

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class Login {
   private url = 'http://127.0.0.1:3000/api/';
@@ -17,5 +17,4 @@ export class Login {
   register(data: any): Observable<any> {
     return this.http.post(`${this.url}users`, data);
   }
-  
 }

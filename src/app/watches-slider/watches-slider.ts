@@ -41,6 +41,11 @@ export class WatchesSlider implements OnInit {
         console.log('Fetched data:', data);
         this.products = data;
         this.currentIndexes = new Array(this.products.length).fill(0);
+
+        // Wait for DOM update then check arrows
+        setTimeout(() => {
+          this.checkArrowsVisibility();
+        }, 0);
       },
       (error) => {
         console.error('Error fetching watch data', error);
@@ -71,6 +76,7 @@ export class WatchesSlider implements OnInit {
         left: -350,
         behavior: 'smooth',
       });
+      setTimeout(() => this.checkArrowsVisibility(), 300);
     }
   }
 
@@ -80,16 +86,30 @@ export class WatchesSlider implements OnInit {
         left: 350,
         behavior: 'smooth',
       });
+      setTimeout(() => this.checkArrowsVisibility(), 300);
     }
   }
 
   checkArrowsVisibility() {
-    const scrollLeft = this.productGrid.nativeElement.scrollLeft;
-    const scrollWidth = this.productGrid.nativeElement.scrollWidth;
-    const clientWidth = this.productGrid.nativeElement.clientWidth;
+    if (!this.productGrid) return;
 
+    const grid = this.productGrid.nativeElement;
+    const scrollLeft = grid.scrollLeft;
+    const scrollWidth = grid.scrollWidth;
+    const clientWidth = grid.clientWidth;
+
+    // Agar total width kaam hai to arrows hide
+    if (scrollWidth <= clientWidth) {
+      this.showLeftArrow = false;
+      this.showRightArrow = false;
+      return;
+    }
+
+    // Left arrow tab show hoga jab start se aage ho
     this.showLeftArrow = scrollLeft > 0;
-    this.showRightArrow = scrollLeft < scrollWidth - clientWidth;
+
+    // Right arrow tab show hoga jab end tak na pohnchay
+    this.showRightArrow = scrollLeft < scrollWidth - clientWidth - 5;
   }
 
   goToSlide(index: number) {

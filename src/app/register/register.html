@@ -1,5 +1,3 @@
-<!-- register.html - Fixed template with corrected password visibility -->
-
 <div class="account-options">
     <div [class.active]="!showLogin" class="create-account" (click)="showLogin = false">
         <img src="/image/user-plus-alt-1-svgrepo-com (1).svg" class="user-icon">
@@ -14,12 +12,19 @@
 <!-- Registration Form -->
 <div class="account-container">
     <div class="registration-form" *ngIf="!showLogin">
-        <h2>CREATE YOUR ACCOUNT</h2>
 
+        <div *ngIf="successMessage" class="success-message">
+            {{ successMessage }}
+        </div>
+
+        <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+        </div>
+
+        <h2>CREATE YOUR ACCOUNT</h2>
         <p class="mandatory-notice">* Mandatory fields</p>
 
         <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
-
             <!-- Title Field -->
             <div class="form-group">
                 <label for="title">Title</label>
@@ -79,7 +84,6 @@
                         <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password"
                             placeholder="Your password"
                             [ngClass]="{'invalid-input': registerForm.get('password')?.invalid && registerForm.get('password')?.touched}">
-                        <!-- Eye icon to toggle password visibility -->
                         <div class="visibility-icon" (click)="togglePasswordVisibility()">
                             <i *ngIf="!showPassword" class="fas fa-eye-slash"></i>
                             <i *ngIf="showPassword" class="fas fa-eye"></i>
@@ -100,7 +104,6 @@
                         <input [type]="showConfirmPassword ? 'text' : 'password'" id="confirmPassword"
                             formControlName="confirmPassword" placeholder="Confirm your password"
                             [ngClass]="{'invalid-input': (registerForm.get('confirmPassword')?.invalid || registerForm.errors?.['passwordMismatch']) && registerForm.get('confirmPassword')?.touched}">
-                        <!-- Eye icon to toggle confirm password visibility -->
                         <div class="visibility-icon" (click)="toggleConfirmPasswordVisibility()">
                             <i *ngIf="!showConfirmPassword" class="fas fa-eye-slash"></i>
                             <i *ngIf="showConfirmPassword" class="fas fa-eye"></i>
@@ -124,9 +127,7 @@
                         [ngClass]="{'invalid-label': registerForm.get('termsAccepted')?.invalid && registerForm.get('termsAccepted')?.touched}">
                         By checking this box, you confirm that you have read and understood our Terms of use. Also, you
                         agree that your data will be processed by TAG Heuer as data controller, in conformity with its
-                        <a href="#">Privacy Policy</a>. Please refer to this privacy policy for all details surrounding
-                        the processing (including the transfer) of your data, as well as to learn more about your rights
-                        and choices regarding such processing.*
+                        <a href="#">Privacy Policy</a>.
                     </label>
                 </div>
                 <div class="validation-error terms-error"
@@ -140,7 +141,6 @@
                         I would like to receive the latest news regarding TAG Heuer's products and services.
                     </label>
                 </div>
-
             </div>
 
             <button type="submit" class="create-account-btn">CREATE YOUR MY TAG HEUER ACCOUNT</button>
@@ -151,10 +151,17 @@
 <!-- Login Form -->
 <div class="account-container">
     <div class="login-form" *ngIf="showLogin">
+
+        <div *ngIf="successMessage" class="success-message">
+            {{ successMessage }}
+        </div>
+
+        <div *ngIf="errorMessage" class="error-message">
+            {{ errorMessage }}
+        </div>
+
         <h2>LOGIN TO YOUR ACCOUNT</h2>
-
         <p class="mandatory-notice">* Mandatory fields</p>
-
         <p class="login-info">Please enter your information to access your account</p>
 
         <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
@@ -176,9 +183,9 @@
             <div class="form-group">
                 <label for="loginPassword">Password *</label>
                 <div class="password-container">
-                    <!-- FIXED: Changed showPassword to showLoginPassword -->
-                    <input [type]="showLoginPassword ? 'text' : 'password'" id="loginPassword" formControlName="password"
-                        placeholder="Your password" (input)="loginErrorMessage = null" [ngClass]="{
+                    <input [type]="showLoginPassword ? 'text' : 'password'" id="loginPassword"
+                        formControlName="password" placeholder="Your password" (input)="loginErrorMessage = null"
+                        [ngClass]="{
                         'invalid-input':
                             loginForm.get('password')?.invalid &&
                             loginForm.get('password')?.touched
@@ -204,14 +211,9 @@
 
             <button type="submit" class="login-btn">LOGIN</button>
 
-            <div class="validation-error" *ngIf="loginErrorMessage">
-                {{ loginErrorMessage }}
-            </div>
-
             <div class="forgotten-password">
                 <a href="#">Forgotten password?</a>
             </div>
         </form>
-
     </div>
 </div>

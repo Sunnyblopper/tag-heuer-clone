@@ -3,7 +3,7 @@
     height: 100vh;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background: #f5f5f5;
-    padding: 57px 0;
+    /* padding: 57px 0; */
 }
 
 .bgcolor {
@@ -111,7 +111,6 @@
     border: 1px solid white;
 }
 
-/* Scrollable content */
 .content-scrol {
     flex: 1;
     overflow-y: auto;
@@ -224,8 +223,6 @@
 .brown {
     color: #9c7c38;
 }
-
-/* Base styles already set for desktop */
 
 /* 1. Max width 1240px */
 @media (max-width: 1240px) {

@@ -111,12 +111,18 @@
   gap: 1rem;
 }
 
+.active-card {
+  background-color: #f5f2f2;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
 .spec-col {
   flex: 1 1 calc(33.333% - 1rem);
   max-width: calc(33.333% - 1rem);
 }
 
-.card-body div {
+.card-body .spec-col {
   margin: 0;
   padding: 0.2rem 0;
   border-bottom: 1px solid #dee2e6;

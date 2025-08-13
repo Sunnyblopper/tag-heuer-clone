@@ -1,7 +1,7 @@
 .main {
     width: 100%;
     font-family: Arial, sans-serif;
-    margin: 80px 0;
+    padding-top: 80px;
 }
 
 .head {
@@ -102,89 +102,146 @@
 }
 
 
-/* 1248px and below */
+/* 1. Max width 1248px */
 @media (max-width: 1248px) {
+    .user-info {
+        padding: 15px 30px;
+    }
+
     .option-item {
-        padding: 12px 18px;
+        padding: 12px 16px;
     }
 }
 
-/* 1100px and below */
-@media (max-width: 1100px) {
-    .label {
-        font-size: 13px;
+/* 2. Max width 1024px */
+@media (max-width: 1024px) {
+    .user-info h2 {
+        font-size: 16px;
     }
+
     .icon img, i {
         width: 22px;
         height: 22px;
     }
-}
 
-/* 992px and below */
-@media (max-width: 992px) {
-    .options {
-        justify-content: space-around;
-    }
-    .option-item {
-        padding: 10px 15px;
-    }
-}
-
-/* 850px and below */
-@media (max-width: 850px) {
     .label {
-        font-size: 12px;
+        font-size: 13px;
     }
+}
+
+/* 3. Max width 900px */
+@media (max-width: 900px) {
+    .head {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .user-info {
+        position: static;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .options {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+/* 4. Max width 768px */
+@media (max-width: 768px) {
+    .option-item {
+        flex: 1 1 33%;
+        padding: 10px 10px;
+    }
+
     .icon img, i {
         width: 20px;
         height: 20px;
     }
-}
 
-/* 768px and below */
-@media (max-width: 768px) {
-    .user-info {
-        display: none;
-    }
-    .options {
-        justify-content: space-between;
-        padding: 0 10px;
-    }
-}
-
-/* 650px and below */
-@media (max-width: 650px) {
     .label {
-        display: none; /* icons only */
-    }
-    .option-item {
-        padding: 8px 10px;
+        font-size: 12px;
     }
 }
 
-/* 500px and below */
-@media (max-width: 500px) {
+/* 5. Max width 600px */
+@media (max-width: 600px) {
+    .option-item {
+        flex: 1 1 50%;
+    }
+
+    .user-info h2 {
+        font-size: 15px;
+    }
+
+    .user-info a {
+        font-size: 13px;
+    }
+}
+
+/* 6. Max width 480px */
+@media (max-width: 480px) {
+    .options {
+        flex-direction: column;
+    }
+
+    .option-item {
+        width: 100%;
+        flex: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    .option-item.active {
+        border-bottom: 3px solid #000;
+    }
+}
+
+/* 7. Max width 400px */
+@media (max-width: 400px) {
+    .user-info h2 {
+        font-size: 14px;
+    }
+
     .icon img, i {
         width: 18px;
         height: 18px;
     }
-}
 
-/* 400px and below */
-@media (max-width: 400px) {
-    .option-item {
-        padding: 6px 8px;
+    .label {
+        font-size: 11px;
     }
 }
 
-/* 300px and below */
+/* 8. Max width 360px */
+@media (max-width: 360px) {
+    .user-info {
+        padding: 10px 15px;
+    }
+
+    .user-info h2 {
+        font-size: 13px;
+    }
+
+    .option-item {
+        padding: 8px 12px;
+    }
+}
+
+/* 9. Max width 300px */
 @media (max-width: 300px) {
-    .options {
-        flex-direction: column;
-        align-items: center;
+    .label {
+        font-size: 10px;
     }
-    .option-item {
-        width: 100%;
-        border-bottom: 1px solid #ddd;
+
+    .icon img, i {
+        width: 16px;
+        height: 16px;
+    }
+
+    .user-info h2,
+    .user-info a {
+        font-size: 12px;
     }
 }

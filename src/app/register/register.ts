@@ -18,6 +18,10 @@ import { Login } from '../login';
 export class Register {
   showLogin = false;
 
+  // ✅ Success & error messages
+  successMessage: string | null = null;
+  errorMessage: string | null = null;
+
   // Registration form
   registerForm!: FormGroup;
   showPassword = false;
@@ -25,7 +29,7 @@ export class Register {
 
   // Login form
   loginForm!: FormGroup;
-  showLoginPassword = false; // Fixed: separate variable for login password visibility
+  showLoginPassword = false;
   loginErrorMessage: string | null = null;
 
   constructor(
@@ -87,6 +91,7 @@ export class Register {
     this.showLoginPassword = !this.showLoginPassword;
   }
 
+  // Updated onRegisterSubmit method in register.component.ts
   onRegisterSubmit(): void {
     if (this.registerForm.valid) {
       console.log('Registration form submitted:', this.registerForm.value);
@@ -99,13 +104,51 @@ export class Register {
         terms: this.registerForm.value.termsAccepted,
         news: this.registerForm.value.newsletterOptIn,
       };
+
       this.login.register(user).subscribe(
         (response) => {
           console.log('Registration successful:', response);
-          this.showLogin = true;
+
+          // ✅ Store user data immediately after successful registration
+          const userData = {
+            id: response?.data?.id || response?.id,
+            title: this.registerForm.value.title,
+            first_name: this.registerForm.value.firstName,
+            last_name: this.registerForm.value.surname,
+            firstName: this.registerForm.value.firstName, // Keep both formats
+            lastName: this.registerForm.value.surname, // Keep both formats
+            email: this.registerForm.value.email,
+            phone: '',
+            dateOfBirth: '',
+            country: '',
+            newsMain: this.registerForm.value.newsletterOptIn,
+            newsTag: false,
+            registrationTimestamp: new Date().toISOString(),
+            ...(response?.data || {}),
+          };
+
+          console.log('Storing registration user data:', userData);
+          localStorage.setItem('loginedUser', JSON.stringify(userData));
+
+          // ✅ Show success message
+          this.successMessage = 'Account created successfully!';
+          this.errorMessage = null;
+
+          // ✅ Reset the form after successful registration
+          this.registerForm.reset();
+          this.registerForm.markAsPristine();
+          this.registerForm.markAsUntouched();
+
+          // ✅ Switch to login page after 3s
+          setTimeout(() => {
+            this.successMessage = null;
+            this.showLogin = true;
+          }, 3000);
         },
         (error) => {
           console.error('Registration failed:', error);
+          this.errorMessage = error?.error?.message || 'Registration failed';
+          this.successMessage = null;
         }
       );
     } else {
@@ -120,58 +163,111 @@ export class Register {
         email: this.loginForm.value.email,
         password: this.loginForm.value.password,
       };
-      
+
       this.login.login(data).subscribe(
         (response: any) => {
           console.log('Login successful:', response);
           this.loginErrorMessage = null;
 
+          // ✅ Show success message
+          this.successMessage = 'Login successful!';
+          this.errorMessage = null;
+
           // Store token if available
-          if (response?.data?.token) {
-            localStorage.setItem('token', response.data.token);
+          if (response?.data?.token || response?.token) {
+            localStorage.setItem(
+              'token',
+              response.data?.token || response.token
+            );
           }
 
-          // Enhanced user data creation with better email handling
           const userData = {
-            // Spread any existing user data from response
-            ...(response?.data?.user || response?.data || {}),
-            
-            // Always ensure email is set (priority order)
-            email: response?.data?.user?.email || 
-                   response?.data?.user?.user_email ||
-                   response?.data?.email ||
-                   response?.email ||
-                   data.email, // fallback to the email used for login
-            
-            // Set name with fallbacks
-            name: response?.data?.user?.name ||
-                  response?.data?.user?.first_name ||
-                  response?.data?.user?.firstName ||
-                  response?.data?.name ||
-                  data.email.split('@')[0] ||
-                  'User',
-            
-            // Include other common properties that might be useful
-            id: response?.data?.user?.id || response?.data?.id,
-            first_name: response?.data?.user?.first_name || response?.data?.first_name,
-            last_name: response?.data?.user?.last_name || response?.data?.last_name,
-            
-            // Store the original login email as backup
-            loginEmail: data.email
+            id: response?.data?.user?.id || response?.data?.id || response?.id,
+            email:
+              response?.data?.user?.email ||
+              response?.data?.user?.user_email ||
+              response?.data?.email ||
+              response?.email ||
+              data.email,
+            name:
+              response?.data?.user?.name ||
+              response?.data?.name ||
+              response?.name,
+            first_name:
+              response?.data?.user?.first_name ||
+              response?.data?.user?.firstName ||
+              response?.data?.first_name ||
+              response?.data?.firstName ||
+              response?.first_name ||
+              response?.firstName,
+            last_name:
+              response?.data?.user?.last_name ||
+              response?.data?.user?.lastName ||
+              response?.data?.last_name ||
+              response?.data?.lastName ||
+              response?.last_name ||
+              response?.lastName,
+            firstName:
+              response?.data?.user?.firstName ||
+              response?.data?.user?.first_name ||
+              response?.data?.firstName ||
+              response?.data?.first_name ||
+              response?.firstName ||
+              response?.first_name,
+            lastName:
+              response?.data?.user?.lastName ||
+              response?.data?.user?.last_name ||
+              response?.data?.lastName ||
+              response?.data?.last_name ||
+              response?.lastName ||
+              response?.last_name,
+            title:
+              response?.data?.user?.title ||
+              response?.data?.title ||
+              response?.title,
+            username:
+              response?.data?.user?.username ||
+              response?.data?.username ||
+              response?.username,
+            user_name:
+              response?.data?.user?.user_name ||
+              response?.data?.user_name ||
+              response?.user_name,
+            loginEmail: data.email,
+            ...(response?.data?.user || {}),
+            ...(response?.data || {}),
+            loginTimestamp: new Date().toISOString(),
           };
 
           console.log('Storing user data:', userData);
           localStorage.setItem('loginedUser', JSON.stringify(userData));
 
-          // Navigate to user page
-          this.router.navigate(['/user']).then(() => {
-            // Optional: reload to ensure all components refresh with new data
-            window.location.reload();
-          });
+          window.dispatchEvent(
+            new StorageEvent('storage', {
+              key: 'loginedUser',
+              newValue: JSON.stringify(userData),
+              oldValue: null,
+              storageArea: localStorage,
+            })
+          );
+
+          // ✅ Delay navigation for 3s after login
+          setTimeout(() => {
+            this.successMessage = null;
+            this.router.navigate(['/user']).then(() => {
+              setTimeout(() => {
+                window.location.reload();
+              }, 100);
+            });
+          }, 3000);
         },
         (error) => {
           console.error('Login failed:', error);
-          this.loginErrorMessage = error?.error?.message || 'Invalid email or password';
+          this.loginErrorMessage =
+            error?.error?.message || 'Invalid email or password';
+
+          this.errorMessage = this.loginErrorMessage;
+          this.successMessage = null;
         }
       );
     } else {

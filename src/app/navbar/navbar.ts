@@ -29,9 +29,14 @@ export class Navbar {
         this.checkLoginStatus();
       }
     });
+
+    // Listen for navigation events to refresh login status
+    this.router.events.subscribe(() => {
+      this.checkLoginStatus();
+    });
   }
 
-  // Method to check login status from localStorage
+  // Enhanced method to check login status from localStorage
   checkLoginStatus(): void {
     const storedUser = localStorage.getItem('loginedUser');
     const token = localStorage.getItem('token');
@@ -184,6 +189,7 @@ export class Navbar {
 
   onPopupMouseEnter() {
     this.isMouseOverPopup = true;
+    this.showUserPopup = true;
   }
 
   onPopupMouseLeave() {
@@ -195,6 +201,25 @@ export class Navbar {
     }, 4000);
   }
 
+  goToAccount(accountId: number): void {
+    localStorage.removeItem('userPage');
+    localStorage.removeItem('orders');
+    localStorage.removeItem('account');
+
+    // Set based on passed ID
+    if (accountId === 1) {
+      localStorage.setItem('userPage', '1');
+    } else if (accountId === 2) {
+      localStorage.setItem('account', '1'); 
+    } else if (accountId === 3) {
+      localStorage.setItem('orders', '1');
+    } else if (accountId === 4) {
+      localStorage.setItem('account', '1');
+    }
+
+    this.router.navigate(['/user']);
+  }
+
   onPopupClick(event: MouseEvent) {
     event.stopPropagation();
   }
@@ -204,6 +229,8 @@ export class Navbar {
     this.loggedInUser = user;
     this.showLoginPopup = false;
     console.log('Login successful in navbar:', user);
+    // Force a check of login status to ensure UI updates
+    this.checkLoginStatus();
   }
 
   onUserPopupMouseEnter() {
@@ -231,16 +258,54 @@ export class Navbar {
     console.log('User signed out successfully');
   }
 
+  // Enhanced method to get user display name with better fallbacks
   getUserDisplayName(): string {
     if (this.loggedInUser) {
-      return (
-        this.loggedInUser.name ||
-        this.loggedInUser.first_name ||
-        this.loggedInUser.firstName ||
-        this.loggedInUser.email?.split('@')[0] ||
-        'User'
-      );
+      // Try various possible name fields in order of preference
+      const possibleNames = [
+        this.loggedInUser.name,
+        this.loggedInUser.first_name,
+        this.loggedInUser.firstName,
+        this.loggedInUser.user_name,
+        this.loggedInUser.username,
+        // If we have both first and last name, combine them
+        this.loggedInUser.first_name && this.loggedInUser.last_name
+          ? `${this.loggedInUser.first_name} ${this.loggedInUser.last_name}`
+          : null,
+        this.loggedInUser.firstName && this.loggedInUser.lastName
+          ? `${this.loggedInUser.firstName} ${this.loggedInUser.lastName}`
+          : null,
+        // Fallback to email username part
+        this.loggedInUser.email?.split('@')[0],
+        this.loggedInUser.loginEmail?.split('@')[0],
+      ];
+
+      // Return the first non-empty, non-null value
+      for (const name of possibleNames) {
+        if (name && name.trim()) {
+          return name.trim();
+        }
+      }
     }
     return 'User';
+  }
+
+  // Method to get user's full name for more formal displays
+  getUserFullName(): string {
+    if (this.loggedInUser) {
+      const firstName =
+        this.loggedInUser.first_name || this.loggedInUser.firstName || '';
+      const lastName =
+        this.loggedInUser.last_name || this.loggedInUser.lastName || '';
+
+      if (firstName && lastName) {
+        return `${firstName} ${lastName}`.trim();
+      } else if (firstName) {
+        return firstName;
+      } else if (lastName) {
+        return lastName;
+      }
+    }
+    return this.getUserDisplayName();
   }
 }

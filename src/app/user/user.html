@@ -1,5 +1,10 @@
 <div class="main">
     <div class="head">
+         <div class="user-info">
+            <h2>{{"Welcome "+ user}}</h2>
+            <a href="" (click)="signOut()">Sign out</a>
+        </div>
+
         <div class="options">
             <div class="option-item" [class.active]="activeOption === 'my-tag-heuer'" (click)="setActive('my-tag-heuer')">
                 <div class="icon">

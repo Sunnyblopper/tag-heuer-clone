@@ -1,42 +1,143 @@
 <div class="profile-container">
-    <div class="profile-column">
-
+    <!-- LEFT COLUMN -->
+    <div class="profile-column left-column">
+        <!-- PERSONAL INFORMATION -->
+        <div class="section-title">PERSONAL INFORMATION</div>
         <div class="profile-section">
-            <div class="section-title">
-                PERSONAL INFORMATION
+            <div class="section-info">
+                <div class="info-header ">
+                    {{ user.title | uppercase }} {{ user.first_name | uppercase }} {{ user.last_name | uppercase }}
+                </div>
             </div>
 
-            <div *ngIf="!editMode" class="content-box user-info">
-                <div class="info-item"><i class="fa-solid fa-envelope"></i> {{ user.email }}</div>
-                <div class="info-item"><i class="fa-solid fa-phone"></i> {{ user.phone }}</div>
+            <div *ngIf="!editMode" class="info-list">
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>{{ user.email }}</span>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>{{ user.phone || '-' }}</span>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-gift"></i>
+                    <span>Date of birth - {{ user.dateOfBirth || '-' }}</span>
+                </div>
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>From {{ user.country || '-' }}</span>
+                </div>
+            </div>
 
+            <!-- EDIT FORM -->
+            <div *ngIf="editMode" class="user-info-container">
+                <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="user-form">
+                    <div class="form-group">
+                        <label>First Name*</label>
+                        <input type="text" formControlName="firstName" />
+                        <div *ngIf="userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched"
+                            class="error-message">First name is required</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name*</label>
+                        <input type="text" formControlName="lastName" />
+                        <div *ngIf="userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched"
+                            class="error-message">Last name is required</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Date of Birth*</label>
+                        <input type="date" formControlName="dateOfBirth" />
+                        <div *ngIf="userForm.get('dateOfBirth')?.invalid && userForm.get('dateOfBirth')?.touched"
+                            class="error-message">Date of birth is required</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number*</label>
+                        <input type="tel" formControlName="phoneNumber" />
+                        <div *ngIf="userForm.get('phoneNumber')?.invalid && userForm.get('phoneNumber')?.touched"
+                            class="error-message">Valid phone number is required</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Country*</label>
+                        <select formControlName="country">
+                            <option value="" disabled>Select your country</option>
+                            <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+                        </select>
+                        <div *ngIf="userForm.get('country')?.invalid && userForm.get('country')?.touched"
+                            class="error-message">Country is required</div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="save-btn" [disabled]="userForm.invalid">Save Information</button>
+                        <button type="button" class="cancel-btn" (click)="editMode = false">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="action-links" *ngIf="!editMode">
+                <a (click)="editInformation()">> EDIT INFORMATION</a>
+                <a (click)="changePassword()">> CHANGE MY PASSWORD</a>
+                <a (click)="changeEmail()">> CHANGE EMAIL</a>
+            </div>
+            <div class="delete-links">
+                <a class="delete-link" (click)="deleteAccount()"><img src="/image/delete-svgrepo-com.svg" alt="">Delete
+                    account</a>
             </div>
         </div>
 
-        <!-- Address Section -->
-        <div class="profile-section address-section">
-            <div class="section-title">MY ADDRESS</div>
-            <div class="content-box">
-                <div class="subsection-title">YOUR SAVED ADDRESSES</div>
-                <div class="empty-message" *ngIf="!addressesRegistered">No address registered yet.</div>
-                <div class="address-list" *ngIf="addressesRegistered">
-                    <div class="address-item" *ngFor="let address of savedAddresses">
-                        <div class="address-content">
-                            <div>{{ address.name }}</div>
-                            <div>{{ address.address }}</div>
-                            <div>{{ address.city }}, {{ address.postal_code }}</div>
-                            <div>{{ address.country }}</div>
-                            <div>{{ address.phone }}</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="add-button" (click)="addNewAddress()">
-                    <div class="plus-icon">+</div> ADD A NEW ADDRESS
+        <!-- ADDRESS SECTION -->
+        <div class="section-title">MY ADDRESS</div>
+        <div class="profile-section">
+            <div class="subsection-title">YOUR SAVED ADDRESSES</div>
+            <div *ngIf="!addressesRegistered" class="empty-address">No address registered yet</div>
+            <div *ngIf="addressesRegistered" class="address-list">
+                <div class="address-item" *ngFor="let address of savedAddresses">
+                    <div>{{ address.name }}</div>
+                    <div>{{ address.address }}</div>
+                    <div>{{ address.city }}, {{ address.postal_code }}</div>
+                    <div>{{ address.country }}</div>
+                    <div>{{ address.phone }}</div>
                 </div>
             </div>
+            <button class="add-address-btn"><span class="plus-button">+</span> ADD A NEW
+                ADDRESS</button>
         </div>
     </div>
 
+    <!-- RIGHT COLUMN -->
+    <div class="profile-column right-column">
+        <!-- COMMUNICATION PREFERENCES -->
+        <div class="section-title">COMMUNICATION PREFERENCES</div>
+        <div class="profile-section">
+            <div class="subsection-title">SUBSCRIPTIONS</div>
+            <div class="subsection-title-small">COMMUNICATION SUBSCRIPTIONS</div>
+            <div class="border-line">
+                <div class="checkbox-item">
+                    <div class="checkbox-items">
+                        <input type="checkbox" id="newsletterMain" [(ngModel)]="subscriptions.newsMain" checked />
+                        <label for="newsletterMain">I would like to receive the latest news regarding TAG Heuer's
+                            products and services :</label>
+
+                    </div>
+                </div>
+                <div class="checkbox-item indented">
+                    <input type="checkbox" id="tagNewsletter" [(ngModel)]="subscriptions.newsTag" />
+                    <label for="tagNewsletter">via TAG Heuer's newsletters</label>
+                </div>
+            </div>
+            <div class="button-padding">
+                <div class="save-btn" (click)="savePreferences()">Save</div>
+            </div>
+        </div>
+
+        <!-- CONFIDENTIALITY PREFERENCES -->
+        <div class="section-title">CONFIDENTIALITY PREFERENCES</div>
+        <div class="profile-section">
+            <div class="subsection-title">NOTIFICATIONS & COOKIES</div>
+            <div class="subsection-text">
+                <span class="arrow link-action">></span>
+                <a (click)="manageCookies()" class="link-action">MANAGE COOKIES</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <app-checkout *ngIf="openAddress" (close)="closeAddress()"></app-checkout>

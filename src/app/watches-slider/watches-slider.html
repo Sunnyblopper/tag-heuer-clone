@@ -6,7 +6,7 @@
 
   <!-- Product Grid -->
   <div class="product-grid" #productGrid>
-    <div *ngFor="let product of products; let i = index" class="product-card" (click)="goToProductPage(i)">
+    <div *ngFor="let product of products; let i = index" class="product-card">
       <div class="image-carousel">
         <div class="image-carousel-inner">
           <img *ngFor="let img of product.images; let idx = index" [src]="img"
@@ -25,7 +25,7 @@
           <div class="new-tag">NEW</div>
           <i class="far fa-heart heart-icon" (click)="toggleHeart($event)"></i>
         </div>
-        <h3>{{ product.name }}</h3>
+        <h3 (click)="goToProductPage(i)">{{ product.name }}</h3>
         <p>{{ product.description }}</p>
         <p class="price">{{ product.price | currency }}</p>
         <button class="customizable-button">CUSTOMIZABLE</button>
