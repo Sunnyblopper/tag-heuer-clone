@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Searchwatches } from '../searchwatches/searchwatches';
 
@@ -7,11 +7,10 @@ import { Searchwatches } from '../searchwatches/searchwatches';
   selector: 'app-searchinput',
   imports: [CommonModule, FormsModule],
   templateUrl: './searchinput.html',
-  styleUrl: './searchinput.css'
+  styleUrl: './searchinput.css',
 })
 export class Searchinput {
-  searchText: string = '';
-
+  @Input() searchText: string = ''; 
   @Output() searchTextChange = new EventEmitter<string>();
 
   onInputChange() {

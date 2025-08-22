@@ -60,15 +60,13 @@ export class Searchwatches {
   ];
 
   searchResults: any[] = [];
-  searchText: string = '';
+  searchText: string = ''; 
   isSearching: boolean = false;
 
   constructor(private http: HttpClient, private router: Router) {}
 
   goToProductPage(product: any, index: number): void {
-    this.router.navigate(['/product', index], {
-      state: { product },
-    });
+    this.router.navigate(['/product', index], { state: { product } });
   }
 
   onSearchTextChange(text: string) {
@@ -86,14 +84,13 @@ export class Searchwatches {
       .get<any[]>(`http://127.0.0.1:3000/api/watches/search/${text}`)
       .subscribe(
         (data) => {
-          // Transform data to match UI expectations
           this.searchResults = data.map((product) => ({
             name: product.name,
             description: product.description,
             imageLarge: product.images?.[0] || '',
             imageSmallSet: product.images?.[0] || '',
             imageSmall: product.images?.[0] || '',
-            link: `/watches/${product._id}`, // Or actual link if it exists
+            link: `/watches/${product._id}`,
           }));
         },
         (error) => {
@@ -101,5 +98,10 @@ export class Searchwatches {
           this.searchResults = [];
         }
       );
+  }
+
+  onTagClick(tag: string): void {
+    this.searchText = tag;
+    this.onSearchTextChange(tag);
   }
 }

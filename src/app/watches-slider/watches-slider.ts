@@ -18,6 +18,7 @@ export class WatchesSlider implements OnInit {
   currentIndex: number = 0;
   showLeftArrow = false;
   showRightArrow = true;
+  slideDirections: string[] = [];
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -60,15 +61,18 @@ export class WatchesSlider implements OnInit {
   }
 
   prevImage(index: number) {
-    this.currentIndexes[index] =
-      (this.currentIndexes[index] - 1 + this.products[index].images.length) %
-      this.products[index].images.length;
-  }
+  this.slideDirections[index] = 'left';
+  this.currentIndexes[index] =
+    (this.currentIndexes[index] - 1 + this.products[index].images.length) %
+    this.products[index].images.length;
+}
 
-  nextImage(index: number) {
-    this.currentIndexes[index] =
-      (this.currentIndexes[index] + 1) % this.products[index].images.length;
-  }
+nextImage(index: number) {
+  this.slideDirections[index] = 'right';
+  this.currentIndexes[index] =
+    (this.currentIndexes[index] + 1) % this.products[index].images.length;
+}
+
 
   scrollLeft() {
     if (this.productGrid) {

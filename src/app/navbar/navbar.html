@@ -60,10 +60,10 @@
                     </div>
 
                     <!-- Optional: Show full name if available -->
-                    <div class="user-full-name" *ngIf="getUserFullName() !== getUserDisplayName()"
+                    <!-- <div class="user-full-name" *ngIf="getUserFullName() !== getUserDisplayName()"
                         style="font-size: 12px; color: #666; text-align: center; margin-bottom: 10px;">
                         {{ getUserFullName() }}
-                    </div>
+                    </div> -->
 
                     <button class="account-button" (click)="goToAccount(1)">
                         ACCESS TO MY ACCOUNT
@@ -166,7 +166,7 @@
         <div class="submenu-items">
             <div class="submenu-item" *ngFor="let sub of selectedSubItems" [class.clickable]="sub.children"
                 (click)="onSubMenuItemClick(sub)">
-                <span>{{ sub.name }}</span>
+                <span class="hover-lines">{{ sub.name }}</span>
                 <svg *ngIf="sub.children" class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2">
                     <polyline points="9,18 15,12 9,6"></polyline>
@@ -177,7 +177,7 @@
         <div *ngIf="selectedSubSubItems.length > 0" class="right-panel">
             <div class="submenu-items sub-submenu">
                 <div *ngFor="let item of selectedSubSubItems" class="submenu-item">
-                    <span>{{ item }}</span>
+                    <span class="hover-lines">{{ item }}</span>
                 </div>
             </div>
         </div>

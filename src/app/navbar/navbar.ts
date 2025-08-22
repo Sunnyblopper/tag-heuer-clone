@@ -164,7 +164,7 @@ export class Navbar {
   }
 
   goToOrders() {
-    this.router.navigate(['/user']);
+    this.router.navigate(['/cart']);
   }
 
   requestAppointment() {
